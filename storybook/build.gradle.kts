@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "org.sopt.official.mds"
+    namespace = "org.sopt.official.storybook"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "org.sopt.official.mds"
+        applicationId = "org.sopt.official.storybook"
         minSdk = 33
         targetSdk = 36
         versionCode = 1
@@ -53,4 +53,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    implementation(project(":mds"))
 }
