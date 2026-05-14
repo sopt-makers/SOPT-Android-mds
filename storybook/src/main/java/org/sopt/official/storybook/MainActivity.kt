@@ -35,6 +35,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
+        style = SoptTheme.typography.heading.h1,
         modifier = modifier.background(SoptTheme.colors.bg.brand.default)
     )
 }
