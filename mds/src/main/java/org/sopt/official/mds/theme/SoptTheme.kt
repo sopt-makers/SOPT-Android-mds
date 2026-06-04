@@ -6,6 +6,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import org.sopt.official.mds.foundation.semantic.MdsColors
+import org.sopt.official.mds.foundation.semantic.MdsRadius
+import org.sopt.official.mds.foundation.semantic.MdsSpacing
 import org.sopt.official.mds.foundation.semantic.MdsTypography
 
 object SoptTheme {
@@ -18,6 +20,12 @@ object SoptTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalSoptTypography.current
+
+    val spacing: MdsSpacing
+        get() = MdsSpacing
+
+    val radius: MdsRadius
+        get() = MdsRadius
 }
 
 private val LocalSoptColors = staticCompositionLocalOf<MdsColors> {
@@ -45,6 +53,7 @@ fun ProvideSoptColorsAndTypography(
 fun SoptTheme(darkTheme: Boolean = false, content: @Composable () -> Unit) {
     val colors = DarkMdsColorScheme
     val typography = MdsTypographyScheme
+
     ProvideSoptColorsAndTypography(colors, typography) {
         MaterialTheme(content = content)
     }
