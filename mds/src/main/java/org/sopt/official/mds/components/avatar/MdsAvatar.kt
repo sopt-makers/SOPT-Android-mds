@@ -44,7 +44,9 @@ fun MdsAvatar(
                 shape = CircleShape
             ),
     ) {
-        when (painter.state.collectAsState().value) {
+        val state = painter.state.collectAsState().value
+
+        when (state) {
             is AsyncImagePainter.State.Success -> {
                 SubcomposeAsyncImageContent()
             }
