@@ -23,4 +23,4 @@ internal val size72 = 72.dp
 internal val size80 = 80.dp
 internal val size120 = 120.dp
 internal val size160 = 160.dp
-internal val full = Int.MAX_VALUE
+internal val max = 9999.dp

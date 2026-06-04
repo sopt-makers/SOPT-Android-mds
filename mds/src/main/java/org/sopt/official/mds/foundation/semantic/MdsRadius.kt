@@ -1,5 +1,6 @@
 package org.sopt.official.mds.foundation.semantic
 
+import org.sopt.official.mds.foundation.base.max
 import org.sopt.official.mds.foundation.base.size0
 import org.sopt.official.mds.foundation.base.size10
 import org.sopt.official.mds.foundation.base.size12
@@ -26,5 +27,5 @@ object MdsRadius {
     val r20 = size20
     val r24 = size24
     val r32 = size32
-    val full = org.sopt.official.mds.foundation.base.full
+    val full = max
 }
