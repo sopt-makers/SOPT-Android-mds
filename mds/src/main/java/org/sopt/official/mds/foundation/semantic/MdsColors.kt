@@ -22,15 +22,39 @@ data class MdsBgColors(
     val dim: Dim
 ) {
     data class Neutral(
-        val inverse: Color, val inverseHover: Color, val inversePressed: Color,
-        val bold: Color, val boldDisabled: Color,
-        val default: Color, val defaultHover: Color, val defaultPressed: Color, val defaultDisabled: Color,
-        val subtle: Color, val subtleHover: Color, val subtlePressed: Color,
-        val ghost: Color, val ghostHover: Color, val ghostPressed: Color
+        val inverse: Color,
+        val inverseHover: Color,
+        val inversePressed: Color,
+        val bold: Color,
+        val boldDisabled: Color,
+        val default: Color,
+        val defaultHover: Color,
+        val defaultPressed: Color,
+        val defaultDisabled: Color,
+        val subtle: Color,
+        val subtleHover: Color,
+        val subtlePressed: Color,
+        val ghost: Color,
+        val ghostHover: Color,
+        val ghostPressed: Color
     )
+
     data class Brand(val default: Color, val subtle: Color, val ghost: Color)
-    data class Secondary(val default: Color, val defaultHover: Color, val defaultPressed: Color, val subtle: Color, val ghost: Color)
-    data class Danger(val default: Color, val defaultHover: Color, val defaultPressed: Color, val ghost: Color)
+    data class Secondary(
+        val default: Color,
+        val defaultHover: Color,
+        val defaultPressed: Color,
+        val subtle: Color,
+        val ghost: Color
+    )
+
+    data class Danger(
+        val default: Color,
+        val defaultHover: Color,
+        val defaultPressed: Color,
+        val ghost: Color
+    )
+
     data class Success(val ghost: Color)
     data class Information(val ghost: Color)
     data class Dim(val default: Color)
@@ -48,8 +72,10 @@ data class MdsFgColors(
 ) {
     data class Neutral(
         val bold: Color, val default: Color, val defaultDisabled: Color,
-        val subtle: Color, val ghost: Color, val inverse: Color
+        val subtle: Color, val ghost: Color, val ghostDisabled: Color,
+        val inverse: Color
     )
+
     data class Brand(val default: Color)
     data class Secondary(val default: Color)
     data class Success(val bold: Color, val default: Color, val subtle: Color)
@@ -70,6 +96,7 @@ data class MdsStrokeColors(
         val default: Color, val defaultFocused: Color, val defaultDisabled: Color,
         val inverse: Color, val subtle: Color, val ghost: Color
     )
+
     data class Brand(val default: Color, val subtle: Color)
     data class Secondary(val default: Color, val subtle: Color)
     data class Information(val subtle: Color)
