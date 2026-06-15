@@ -11,6 +11,7 @@ internal val size10 = 10.dp
 internal val size12 = 12.dp
 internal val size14 = 14.dp
 internal val size16 = 16.dp
+internal val size18 = 18.dp
 internal val size20 = 20.dp
 internal val size24 = 24.dp
 internal val size28 = 28.dp
