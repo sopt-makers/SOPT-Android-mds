@@ -83,6 +83,7 @@ val DarkMdsColorScheme = MdsColors(
             defaultDisabled = gray500,
             subtle = gray300,
             ghost = gray500,
+            ghostDisabled = gray700,
             inverse = gray950
         ),
         brand = MdsFgColors.Brand(default = orange400),
