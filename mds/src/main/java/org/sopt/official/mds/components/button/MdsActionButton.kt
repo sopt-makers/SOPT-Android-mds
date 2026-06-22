@@ -38,7 +38,7 @@ fun MdsActionButton(
     val colors = type.colors()
     val (backgroundColor, textColor) = when {
         !enabled -> colors.disabledBackground to colors.disabledText
-        pressed -> colors.pressedBackground to colors.text
+        pressed -> colors.pressedBackground to colors.pressedText
         else -> colors.background to colors.text
     }
 

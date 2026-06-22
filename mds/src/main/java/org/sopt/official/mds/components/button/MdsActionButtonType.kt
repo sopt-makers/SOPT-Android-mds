@@ -1,6 +1,7 @@
 package org.sopt.official.mds.components.button
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import org.sopt.official.mds.theme.SoptTheme
 
 enum class MdsActionButtonType {
@@ -14,7 +15,11 @@ enum class MdsActionButtonType {
             background = SoptTheme.colors.bg.neutral.inverse,
             pressedBackground = SoptTheme.colors.bg.neutral.inversePressed,
             disabledBackground = SoptTheme.colors.bg.neutral.defaultDisabled,
+            strokeColor = Color.Transparent,
+            pressedStrokeColor = Color.Transparent,
+            disabledStrokeColor = Color.Transparent,
             text = SoptTheme.colors.fg.neutral.inverse,
+            pressedText = SoptTheme.colors.fg.neutral.inverse,
             disabledText = SoptTheme.colors.fg.neutral.defaultDisabled
         )
 
@@ -22,7 +27,11 @@ enum class MdsActionButtonType {
             background = SoptTheme.colors.bg.neutral.subtle,
             pressedBackground = SoptTheme.colors.bg.neutral.subtlePressed,
             disabledBackground = SoptTheme.colors.bg.neutral.defaultDisabled,
+            strokeColor = Color.Transparent,
+            pressedStrokeColor = Color.Transparent,
+            disabledStrokeColor = Color.Transparent,
             text = SoptTheme.colors.fg.neutral.bold,
+            pressedText = SoptTheme.colors.fg.neutral.bold,
             disabledText = SoptTheme.colors.fg.neutral.defaultDisabled
         )
 
@@ -30,7 +39,11 @@ enum class MdsActionButtonType {
             background = SoptTheme.colors.bg.danger.default,
             pressedBackground = SoptTheme.colors.bg.danger.defaultPressed,
             disabledBackground = SoptTheme.colors.bg.neutral.defaultDisabled,
+            strokeColor = Color.Transparent,
+            pressedStrokeColor = Color.Transparent,
+            disabledStrokeColor = Color.Transparent,
             text = SoptTheme.colors.fg.neutral.bold,
+            pressedText = SoptTheme.colors.fg.neutral.bold,
             disabledText = SoptTheme.colors.fg.neutral.defaultDisabled
         )
     }
