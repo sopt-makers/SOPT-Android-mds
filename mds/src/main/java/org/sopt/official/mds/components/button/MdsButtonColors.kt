@@ -9,9 +9,9 @@ data class MdsButtonColors(
     val pressedBackground: Color,
     val disabledBackground: Color,
 
-    val strokeColor: Color,
-    val pressedStrokeColor: Color,
-    val disabledStrokeColor: Color,
+    val stroke: Color,
+    val pressedStroke: Color,
+    val disabledStroke: Color,
 
     val text: Color,
     val pressedText: Color,
