@@ -88,6 +88,13 @@ val MdsTypographyScheme = MdsTypography(
             fontSize = MdsBaseTypography.size14,
             lineHeight = MdsBaseTypography.line22,
             letterSpacing = MdsBaseTypography.spacingWide
+        ),
+        b3 = TextStyle(
+            fontFamily = MdsFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = MdsBaseTypography.size12,
+            lineHeight = MdsBaseTypography.line18,
+            letterSpacing = MdsBaseTypography.spacingWide
         )
     ),
     label = MdsTypography.Label(
