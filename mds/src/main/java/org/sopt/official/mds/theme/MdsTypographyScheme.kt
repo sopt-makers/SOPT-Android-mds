@@ -62,6 +62,13 @@ val MdsTypographyScheme = MdsTypography(
         t4 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
+            fontSize = MdsBaseTypography.size18,
+            lineHeight = MdsBaseTypography.line26,
+            letterSpacing = MdsBaseTypography.spacingDefault
+        ),
+        t5 = TextStyle(
+            fontFamily = MdsFontFamily,
+            fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size16,
             lineHeight = MdsBaseTypography.line24,
             letterSpacing = MdsBaseTypography.spacingWide
@@ -80,6 +87,13 @@ val MdsTypographyScheme = MdsTypography(
             fontWeight = FontWeight.Normal,
             fontSize = MdsBaseTypography.size14,
             lineHeight = MdsBaseTypography.line22,
+            letterSpacing = MdsBaseTypography.spacingWide
+        ),
+        b3 = TextStyle(
+            fontFamily = MdsFontFamily,
+            fontWeight = FontWeight.Normal,
+            fontSize = MdsBaseTypography.size12,
+            lineHeight = MdsBaseTypography.line18,
             letterSpacing = MdsBaseTypography.spacingWide
         )
     ),
