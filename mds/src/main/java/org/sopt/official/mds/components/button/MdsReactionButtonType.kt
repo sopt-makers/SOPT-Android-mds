@@ -9,11 +9,11 @@ enum class MdsReactionButtonType() {
     UNSELECTED;
 
     @Composable
-    fun colors(): MdsButtonColors = when (this) {
+    fun colors(size: MdsReactionButtonSize): MdsButtonColors = when (this) {
         SELECTED -> MdsButtonColors(
             background = Color.Transparent,
             pressedBackground = Color.Transparent,
-            disabledBackground = SoptTheme.colors.bg.neutral.defaultDisabled,
+            disabledBackground = if (size == MdsReactionButtonSize.XSMALL) Color.Transparent else SoptTheme.colors.bg.neutral.defaultDisabled,
             stroke = SoptTheme.colors.stroke.neutral.default,
             pressedStroke = SoptTheme.colors.stroke.neutral.defaultFocused,
             disabledStroke = SoptTheme.colors.stroke.neutral.defaultDisabled,
@@ -25,7 +25,7 @@ enum class MdsReactionButtonType() {
         UNSELECTED -> MdsButtonColors(
             background = Color.Transparent,
             pressedBackground = Color.Transparent,
-            disabledBackground = SoptTheme.colors.bg.neutral.defaultDisabled,
+            disabledBackground = if (size == MdsReactionButtonSize.XSMALL) Color.Transparent else SoptTheme.colors.bg.neutral.defaultDisabled,
             stroke = SoptTheme.colors.stroke.neutral.default,
             pressedStroke = SoptTheme.colors.stroke.neutral.defaultFocused,
             disabledStroke = SoptTheme.colors.stroke.neutral.defaultDisabled,

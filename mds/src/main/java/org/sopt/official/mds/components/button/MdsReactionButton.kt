@@ -38,11 +38,11 @@ fun MdsReactionButton(
     val interactionSource = remember { MutableInteractionSource() }
     val pressed by interactionSource.collectIsPressedAsState()
 
-    val colors = type.colors()
+    val colors = type.colors(size)
     val (backgroundColor, strokeColor, textColor) = when {
         !enabled -> Triple(colors.disabledBackground, colors.disabledStroke, colors.disabledText)
         pressed -> Triple(colors.pressedBackground, colors.pressedStroke, colors.pressedText)
-        else -> Triple(colors.background, colors.pressedStroke, colors.text)
+        else -> Triple(colors.background, colors.stroke, colors.text)
     }
 
     Row(
