@@ -2,6 +2,7 @@ package org.sopt.official.mds.theme
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import org.sopt.official.mds.foundation.base.MdsBaseTypography
 import org.sopt.official.mds.foundation.base.MdsFontFamily
 import org.sopt.official.mds.foundation.semantic.MdsTypography
@@ -13,28 +14,44 @@ val MdsTypographyScheme = MdsTypography(
             fontWeight = FontWeight.Bold,
             fontSize = MdsBaseTypography.size32,
             lineHeight = MdsBaseTypography.line48,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         h2 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.Bold,
             fontSize = MdsBaseTypography.size24,
             lineHeight = MdsBaseTypography.line36,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         h3 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.Bold,
             fontSize = MdsBaseTypography.size20,
             lineHeight = MdsBaseTypography.line30,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         h4 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.Bold,
             fontSize = MdsBaseTypography.size16,
             lineHeight = MdsBaseTypography.line24,
-            letterSpacing = MdsBaseTypography.spacingWide
+            letterSpacing = MdsBaseTypography.spacingWide,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         )
     ),
     title = MdsTypography.Title(
@@ -43,35 +60,55 @@ val MdsTypographyScheme = MdsTypography(
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size28,
             lineHeight = MdsBaseTypography.line42,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         t2 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size24,
             lineHeight = MdsBaseTypography.line36,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         t3 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size20,
             lineHeight = MdsBaseTypography.line30,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         t4 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size18,
             lineHeight = MdsBaseTypography.line26,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         t5 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size16,
             lineHeight = MdsBaseTypography.line24,
-            letterSpacing = MdsBaseTypography.spacingWide
+            letterSpacing = MdsBaseTypography.spacingWide,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         )
     ),
     body = MdsTypography.Body(
@@ -80,21 +117,33 @@ val MdsTypographyScheme = MdsTypography(
             fontWeight = FontWeight.Normal,
             fontSize = MdsBaseTypography.size16,
             lineHeight = MdsBaseTypography.line26,
-            letterSpacing = MdsBaseTypography.spacingWide
+            letterSpacing = MdsBaseTypography.spacingWide,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         b2 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.Normal,
             fontSize = MdsBaseTypography.size14,
             lineHeight = MdsBaseTypography.line22,
-            letterSpacing = MdsBaseTypography.spacingWide
+            letterSpacing = MdsBaseTypography.spacingWide,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         b3 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.Normal,
             fontSize = MdsBaseTypography.size12,
             lineHeight = MdsBaseTypography.line18,
-            letterSpacing = MdsBaseTypography.spacingWide
+            letterSpacing = MdsBaseTypography.spacingWide,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         )
     ),
     label = MdsTypography.Label(
@@ -103,28 +152,44 @@ val MdsTypographyScheme = MdsTypography(
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size18,
             lineHeight = MdsBaseTypography.line24,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         l2 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size16,
             lineHeight = MdsBaseTypography.line22,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         l3 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size14,
             lineHeight = MdsBaseTypography.line18,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         ),
         l4 = TextStyle(
             fontFamily = MdsFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = MdsBaseTypography.size12,
             lineHeight = MdsBaseTypography.line16,
-            letterSpacing = MdsBaseTypography.spacingDefault
+            letterSpacing = MdsBaseTypography.spacingDefault,
+            lineHeightStyle = LineHeightStyle(
+                alignment = LineHeightStyle.Alignment.Center,
+                trim = LineHeightStyle.Trim.None
+            )
         )
     )
 )
