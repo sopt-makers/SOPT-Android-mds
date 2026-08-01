@@ -88,7 +88,7 @@ fun MdsFloatingButton(
         if (type.showText && text != null) {
             Text(
                 text = text,
-                style = SoptTheme.typography.label.l1,
+                style = SoptTheme.typography.label1,
                 color = textColor
             )
         }

@@ -26,7 +26,7 @@ enum class MdsRadioSize(
 
     @Composable
     fun typography() = when (this) {
-        SMALL -> SoptTheme.typography.label.l3
-        LARGE -> SoptTheme.typography.label.l2
+        SMALL -> SoptTheme.typography.label3
+        LARGE -> SoptTheme.typography.label2
     }
 }

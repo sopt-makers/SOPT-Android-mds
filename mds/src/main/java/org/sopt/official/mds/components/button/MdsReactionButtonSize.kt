@@ -40,9 +40,9 @@ enum class MdsReactionButtonSize(
     @Composable
     fun textStyle(): TextStyle =
         when (this) {
-            XSMALL -> SoptTheme.typography.label.l4
-            SMALL -> SoptTheme.typography.label.l4
-            MEDIUM -> SoptTheme.typography.label.l3
-            LARGE -> SoptTheme.typography.label.l1
+            XSMALL -> SoptTheme.typography.label4
+            SMALL -> SoptTheme.typography.label4
+            MEDIUM -> SoptTheme.typography.label3
+            LARGE -> SoptTheme.typography.label1
         }
 }

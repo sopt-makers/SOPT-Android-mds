@@ -52,7 +52,7 @@ class CalloutActivity : ComponentActivity() {
 
                         Text(
                             text = "Callout",
-                            style = SoptTheme.typography.title.t1,
+                            style = SoptTheme.typography.title1,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 20.dp)
@@ -67,7 +67,7 @@ class CalloutActivity : ComponentActivity() {
                                 placeholder = {
                                     Text(
                                         text = "Title",
-                                        style = SoptTheme.typography.body.b1,
+                                        style = SoptTheme.typography.body1,
                                         color = SoptTheme.colors.fg.neutral.default
                                     )
                                 },
@@ -91,7 +91,7 @@ class CalloutActivity : ComponentActivity() {
                                 placeholder = {
                                     Text(
                                         text = "Button",
-                                        style = SoptTheme.typography.body.b1,
+                                        style = SoptTheme.typography.body1,
                                         color = SoptTheme.colors.fg.neutral.default
                                     )
                                 },

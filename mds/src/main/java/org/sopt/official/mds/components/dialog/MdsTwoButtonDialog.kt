@@ -47,7 +47,7 @@ internal fun MdsTwoButtonDialog(
         ) {
             Text(
                 text = title,
-                style = SoptTheme.typography.heading.h3,
+                style = SoptTheme.typography.heading3,
                 color = SoptTheme.colors.fg.neutral.bold,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -57,7 +57,7 @@ internal fun MdsTwoButtonDialog(
 
                 Text(
                     text = description,
-                    style = SoptTheme.typography.body.b2,
+                    style = SoptTheme.typography.body2,
                     color = SoptTheme.colors.fg.neutral.default,
                     modifier = Modifier.fillMaxWidth()
                 )

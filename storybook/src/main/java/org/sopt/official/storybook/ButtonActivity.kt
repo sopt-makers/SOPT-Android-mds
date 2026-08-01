@@ -65,7 +65,7 @@ class ButtonActivity : ComponentActivity() {
 
                         Text(
                             text = "Button",
-                            style = SoptTheme.typography.title.t1,
+                            style = SoptTheme.typography.title1,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 20.dp)
@@ -73,7 +73,7 @@ class ButtonActivity : ComponentActivity() {
 
                         Text(
                             text = "Action Button",
-                            style = SoptTheme.typography.title.t2,
+                            style = SoptTheme.typography.title2,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 10.dp)
@@ -277,7 +277,7 @@ class ButtonActivity : ComponentActivity() {
 
                         Text(
                             text = "Reaction Button",
-                            style = SoptTheme.typography.title.t2,
+                            style = SoptTheme.typography.title2,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 10.dp)
@@ -526,7 +526,7 @@ class ButtonActivity : ComponentActivity() {
 
                         Text(
                             text = "Floating Button",
-                            style = SoptTheme.typography.title.t2,
+                            style = SoptTheme.typography.title2,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 10.dp)

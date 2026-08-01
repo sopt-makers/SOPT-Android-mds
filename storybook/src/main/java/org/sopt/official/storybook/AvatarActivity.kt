@@ -78,7 +78,7 @@ class AvatarActivity : ComponentActivity() {
                             ) {
                                 Text(
                                     text = "Avatar",
-                                    style = SoptTheme.typography.title.t1,
+                                    style = SoptTheme.typography.title1,
                                     color = SoptTheme.colors.fg.neutral.bold,
                                     modifier = Modifier
                                         .padding(vertical = 20.dp)

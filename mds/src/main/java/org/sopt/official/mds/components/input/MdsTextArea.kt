@@ -62,14 +62,14 @@ fun MdsTextArea(
                 label?.let {
                     Text(
                         text = label,
-                        style = SoptTheme.typography.title.t5,
+                        style = SoptTheme.typography.title5,
                         color = SoptTheme.colors.fg.neutral.bold
                     )
 
                     if (required) {
                         Text(
                             text = "*",
-                            style = SoptTheme.typography.title.t5,
+                            style = SoptTheme.typography.title5,
                             color = SoptTheme.colors.fg.brand.default
                         )
                     }
@@ -80,7 +80,7 @@ fun MdsTextArea(
         description?.let {
             Text(
                 text = description,
-                style = SoptTheme.typography.body.b2,
+                style = SoptTheme.typography.body2,
                 color = SoptTheme.colors.fg.neutral.default
             )
         }
@@ -90,7 +90,7 @@ fun MdsTextArea(
         MdsBasicTextField(
             state = state,
             modifier = modifier,
-            textStyle = SoptTheme.typography.body.b1.copy(
+            textStyle = SoptTheme.typography.body1.copy(
                 color = SoptTheme.colors.fg.neutral.bold
             ),
             interactionSource = interactionSource,
@@ -158,7 +158,7 @@ private fun MdsTextAreaDecorator(
             placeholder?.let {
                 Text(
                     text = placeholder,
-                    style = SoptTheme.typography.body.b1,
+                    style = SoptTheme.typography.body1,
                     color = SoptTheme.colors.fg.neutral.ghost
                 )
             }
@@ -209,7 +209,7 @@ private fun MdsTextAreaFooter(
 
         Text(
             text = (if (isError) errorText else helperText) ?: "",
-            style = SoptTheme.typography.body.b3,
+            style = SoptTheme.typography.body3,
             color = if (isError) SoptTheme.colors.fg.danger.default else SoptTheme.colors.fg.neutral.ghost,
             modifier = Modifier.weight(1f)
         )
@@ -217,7 +217,7 @@ private fun MdsTextAreaFooter(
         maxLength?.let {
             Text(
                 text = "$currentLength/$maxLength",
-                style = SoptTheme.typography.body.b3,
+                style = SoptTheme.typography.body3,
                 color = SoptTheme.colors.fg.neutral.ghost
             )
         }

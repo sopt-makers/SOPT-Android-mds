@@ -66,7 +66,7 @@ class ControlActivity : ComponentActivity() {
                     ) {
                         Text(
                             text = "Control",
-                            style = SoptTheme.typography.title.t1,
+                            style = SoptTheme.typography.title1,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier.padding(horizontal = 20.dp)
                         )
@@ -78,7 +78,7 @@ class ControlActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "Checkbox",
-                                style = SoptTheme.typography.title.t2,
+                                style = SoptTheme.typography.title2,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 
@@ -131,7 +131,7 @@ class ControlActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "Radio",
-                                style = SoptTheme.typography.title.t2,
+                                style = SoptTheme.typography.title2,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 
@@ -184,7 +184,7 @@ class ControlActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "Toggle",
-                                style = SoptTheme.typography.title.t2,
+                                style = SoptTheme.typography.title2,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 

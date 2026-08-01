@@ -60,7 +60,7 @@ fun MdsCallout(
         ) {
             Text(
                 text = text,
-                style = SoptTheme.typography.body.b2,
+                style = SoptTheme.typography.body2,
                 color = colors.text
             )
 

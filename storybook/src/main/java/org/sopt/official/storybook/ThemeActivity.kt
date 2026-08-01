@@ -101,7 +101,7 @@ fun TokenShowcaseScreen(
 fun SectionTitle(text: String) {
     Text(
         text = text,
-        style = SoptTheme.typography.heading.h3,
+        style = SoptTheme.typography.heading3,
         color = SoptTheme.colors.fg.neutral.bold
     )
 }
@@ -131,7 +131,7 @@ fun ColorItem(
 
         Text(
             text = name,
-            style = SoptTheme.typography.body.b2,
+            style = SoptTheme.typography.body2,
             color = SoptTheme.colors.fg.neutral.bold
         )
     }
@@ -143,85 +143,85 @@ fun TypographySection() {
 
         Text(
             text = "heading.h1",
-            style = SoptTheme.typography.heading.h1,
+            style = SoptTheme.typography.heading1,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "heading.h2",
-            style = SoptTheme.typography.heading.h2,
+            style = SoptTheme.typography.heading2,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "heading.h3",
-            style = SoptTheme.typography.heading.h3,
+            style = SoptTheme.typography.heading3,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "heading.h4",
-            style = SoptTheme.typography.heading.h4,
+            style = SoptTheme.typography.heading4,
             color = SoptTheme.colors.fg.neutral.default
         )
 
         Text(
             text = "title.t1",
-            style = SoptTheme.typography.title.t1,
+            style = SoptTheme.typography.title1,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "title.t2",
-            style = SoptTheme.typography.title.t2,
+            style = SoptTheme.typography.title2,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "title.t3",
-            style = SoptTheme.typography.title.t3,
+            style = SoptTheme.typography.title3,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "title.t4",
-            style = SoptTheme.typography.title.t4,
+            style = SoptTheme.typography.title4,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "title.t5",
-            style = SoptTheme.typography.title.t5,
+            style = SoptTheme.typography.title5,
             color = SoptTheme.colors.fg.neutral.default
         )
 
         Text(
             text = "body.b1",
-            style = SoptTheme.typography.body.b1,
+            style = SoptTheme.typography.body1,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "body.b2",
-            style = SoptTheme.typography.body.b2,
+            style = SoptTheme.typography.body2,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "body.b3",
-            style = SoptTheme.typography.body.b3,
+            style = SoptTheme.typography.body3,
             color = SoptTheme.colors.fg.neutral.default
         )
 
         Text(
             text = "label.l1",
-            style = SoptTheme.typography.label.l1,
+            style = SoptTheme.typography.label1,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "label.l2",
-            style = SoptTheme.typography.label.l2,
+            style = SoptTheme.typography.label2,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "label.l3",
-            style = SoptTheme.typography.label.l3,
+            style = SoptTheme.typography.label3,
             color = SoptTheme.colors.fg.neutral.default
         )
         Text(
             text = "label.l4",
-            style = SoptTheme.typography.label.l4,
+            style = SoptTheme.typography.label4,
             color = SoptTheme.colors.fg.neutral.default
         )
     }

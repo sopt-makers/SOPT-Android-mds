@@ -39,7 +39,7 @@ fun MdsSearchField(
     MdsBasicTextField(
         state = state,
         modifier = modifier,
-        textStyle = SoptTheme.typography.body.b1.copy(
+        textStyle = SoptTheme.typography.body1.copy(
             color = SoptTheme.colors.fg.neutral.bold
         ),
         lineLimits = TextFieldLineLimits.SingleLine,
@@ -96,7 +96,7 @@ private fun MdsSearchFieldDecorator(
             placeholder?.let {
                 Text(
                     text = placeholder,
-                    style = SoptTheme.typography.body.b1,
+                    style = SoptTheme.typography.body1,
                     color = SoptTheme.colors.fg.neutral.ghost
                 )
             }

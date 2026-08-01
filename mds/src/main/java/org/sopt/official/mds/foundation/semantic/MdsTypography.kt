@@ -5,13 +5,23 @@ import androidx.compose.ui.text.TextStyle
 
 @Immutable
 data class MdsTypography(
-    val heading: Heading,
-    val title: Title,
-    val body: Body,
-    val label: Label
-) {
-    data class Heading(val h1: TextStyle, val h2: TextStyle, val h3: TextStyle, val h4: TextStyle)
-    data class Title(val t1: TextStyle, val t2: TextStyle, val t3: TextStyle, val t4: TextStyle, val t5: TextStyle)
-    data class Body(val b1: TextStyle, val b2: TextStyle, val b3: TextStyle)
-    data class Label(val l1: TextStyle, val l2: TextStyle, val l3: TextStyle, val l4: TextStyle)
-}
+    val heading1: TextStyle,
+    val heading2: TextStyle,
+    val heading3: TextStyle,
+    val heading4: TextStyle,
+
+    val title1: TextStyle,
+    val title2: TextStyle,
+    val title3: TextStyle,
+    val title4: TextStyle,
+    val title5: TextStyle,
+
+    val body1: TextStyle,
+    val body2: TextStyle,
+    val body3: TextStyle,
+
+    val label1: TextStyle,
+    val label2: TextStyle,
+    val label3: TextStyle,
+    val label4: TextStyle
+)

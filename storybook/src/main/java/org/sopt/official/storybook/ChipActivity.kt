@@ -56,7 +56,7 @@ class ChipActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "Chip",
-                                style = SoptTheme.typography.title.t1,
+                                style = SoptTheme.typography.title1,
                                 color = SoptTheme.colors.fg.neutral.bold,
                                 modifier = Modifier.padding(top = 10.dp)
                             )
