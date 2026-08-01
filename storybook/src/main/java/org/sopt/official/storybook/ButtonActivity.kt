@@ -8,7 +8,9 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -35,6 +37,8 @@ import org.sopt.official.mds.components.chip.MdsChip
 import org.sopt.official.mds.theme.SoptTheme
 
 private val actionButtonList = listOf("Primary", "Secondary", "Danger")
+private val reactionButtonList =
+    listOf(MdsReactionButtonType.SELECTED, MdsReactionButtonType.UNSELECTED)
 
 class ButtonActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +61,8 @@ class ButtonActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
                         var actionButtonType by remember { mutableStateOf(actionButtonList[0]) }
+                        var reactionButtonType by remember { mutableStateOf(reactionButtonList[0]) }
+
                         Text(
                             text = "Button",
                             style = SoptTheme.typography.title.t1,
@@ -92,50 +98,93 @@ class ButtonActivity : ComponentActivity() {
                             "Danger" -> MdsActionButtonType.DANGER
                             else -> MdsActionButtonType.PRIMARY
                         }
+
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(5.dp)
+                            horizontalArrangement = Arrangement.spacedBy(5.dp),
+                            modifier = Modifier
+                                .horizontalScroll(rememberScrollState())
                         ) {
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.XSMALL,
                                 type = type
                             ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.XSMALL,
                                 type = type,
                                 prefixIcon = R.drawable.ic_plus_outlined
-                            ) {
-                            }
+                            ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.XSMALL,
                                 type = type,
                                 suffixIcon = R.drawable.ic_chevron_right_outlined
                             ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.XSMALL,
+                                type = type,
+                                prefixIcon = R.drawable.ic_plus_outlined,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.XSMALL,
+                                type = type,
+                                enabled = false,
+                                prefixIcon = R.drawable.ic_plus_outlined,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
                         }
+
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(5.dp)
+                            horizontalArrangement = Arrangement.spacedBy(5.dp),
+                            modifier = Modifier
+                                .horizontalScroll(rememberScrollState())
                         ) {
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.SMALL,
                                 type = type
                             ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.SMALL,
                                 type = type,
                                 prefixIcon = R.drawable.ic_plus_outlined
-                            ) {
-                            }
+                            ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.SMALL,
                                 type = type,
                                 suffixIcon = R.drawable.ic_chevron_right_outlined
                             ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.SMALL,
+                                type = type,
+                                prefixIcon = R.drawable.ic_plus_outlined,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.SMALL,
+                                type = type,
+                                enabled = false,
+                                prefixIcon = R.drawable.ic_plus_outlined,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
                         }
+
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(5.dp),
                             modifier = Modifier
@@ -148,20 +197,39 @@ class ButtonActivity : ComponentActivity() {
                                 size = MdsActionButtonSize.MEDIUM,
                                 type = type
                             ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.MEDIUM,
                                 type = type,
                                 prefixIcon = R.drawable.ic_plus_outlined
-                            ) {
-                            }
+                            ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.MEDIUM,
                                 type = type,
                                 suffixIcon = R.drawable.ic_chevron_right_outlined
                             ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.MEDIUM,
+                                type = type,
+                                prefixIcon = R.drawable.ic_plus_outlined,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.MEDIUM,
+                                type = type,
+                                enabled = false,
+                                prefixIcon = R.drawable.ic_plus_outlined,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
                         }
+
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(5.dp),
                             modifier = Modifier
@@ -174,17 +242,35 @@ class ButtonActivity : ComponentActivity() {
                                 size = MdsActionButtonSize.LARGE,
                                 type = type
                             ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.LARGE,
                                 type = type,
                                 prefixIcon = R.drawable.ic_plus_outlined
-                            ) {
-                            }
+                            ) { }
+
                             MdsActionButton(
                                 text = actionButtonType,
                                 size = MdsActionButtonSize.LARGE,
                                 type = type,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.LARGE,
+                                type = type,
+                                prefixIcon = R.drawable.ic_plus_outlined,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined
+                            ) { }
+
+                            MdsActionButton(
+                                text = actionButtonType,
+                                size = MdsActionButtonSize.LARGE,
+                                type = type,
+                                enabled = false,
+                                prefixIcon = R.drawable.ic_plus_outlined,
                                 suffixIcon = R.drawable.ic_chevron_right_outlined
                             ) { }
                         }
@@ -198,15 +284,31 @@ class ButtonActivity : ComponentActivity() {
                         )
 
                         var count by remember { mutableIntStateOf(0) }
+
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        ) {
+                            repeat(2) {
+                                MdsChip(
+                                    text = reactionButtonList[it].name.lowercase(),
+                                    selected = reactionButtonType == reactionButtonList[it],
+                                ) {
+                                    reactionButtonType = reactionButtonList[it]
+                                }
+                            }
+                        }
+
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .horizontalScroll(rememberScrollState())
                         ) {
                             MdsReactionButton(
                                 text = "XSMALL",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.XSMALL,
-                                type = MdsReactionButtonType.SELECTED
+                                type = reactionButtonType
                             ) {
                                 count++
                             }
@@ -215,7 +317,29 @@ class ButtonActivity : ComponentActivity() {
                                 text = "XSMALL",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.XSMALL,
-                                type = MdsReactionButtonType.UNSELECTED
+                                type = reactionButtonType,
+                                prefixIcon = R.drawable.ic_plus_outlined
+                            ) {
+                                count++
+                            }
+
+                            MdsReactionButton(
+                                text = "XSMALL",
+                                reactionCount = count,
+                                size = MdsReactionButtonSize.XSMALL,
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                            ) {
+                                count++
+                            }
+
+                            MdsReactionButton(
+                                text = "XSMALL",
+                                reactionCount = count,
+                                size = MdsReactionButtonSize.XSMALL,
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                                prefixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
                             }
@@ -225,7 +349,9 @@ class ButtonActivity : ComponentActivity() {
                                 reactionCount = count,
                                 enabled = false,
                                 size = MdsReactionButtonSize.XSMALL,
-                                type = MdsReactionButtonType.UNSELECTED
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                                prefixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
                             }
@@ -233,13 +359,26 @@ class ButtonActivity : ComponentActivity() {
 
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .horizontalScroll(rememberScrollState())
                         ) {
                             MdsReactionButton(
                                 text = "SMALL",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.SMALL,
-                                type = MdsReactionButtonType.SELECTED
+                                type = reactionButtonType
+                            ) {
+                                count++
+                            }
+
+
+                            MdsReactionButton(
+                                text = "SMALL",
+                                reactionCount = count,
+                                size = MdsReactionButtonSize.SMALL,
+                                type = reactionButtonType,
+                                prefixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
                             }
@@ -248,7 +387,8 @@ class ButtonActivity : ComponentActivity() {
                                 text = "SMALL",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.SMALL,
-                                type = MdsReactionButtonType.UNSELECTED
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
                             ) {
                                 count++
                             }
@@ -258,7 +398,9 @@ class ButtonActivity : ComponentActivity() {
                                 reactionCount = count,
                                 enabled = false,
                                 size = MdsReactionButtonSize.SMALL,
-                                type = MdsReactionButtonType.UNSELECTED
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                                prefixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
                             }
@@ -266,13 +408,15 @@ class ButtonActivity : ComponentActivity() {
 
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .horizontalScroll(rememberScrollState())
                         ) {
                             MdsReactionButton(
                                 text = "MEDIUM",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.MEDIUM,
-                                type = MdsReactionButtonType.SELECTED
+                                type = reactionButtonType
                             ) {
                                 count++
                             }
@@ -281,7 +425,29 @@ class ButtonActivity : ComponentActivity() {
                                 text = "MEDIUM",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.MEDIUM,
-                                type = MdsReactionButtonType.UNSELECTED
+                                type = reactionButtonType,
+                                prefixIcon = R.drawable.ic_plus_outlined
+                            ) {
+                                count++
+                            }
+
+                            MdsReactionButton(
+                                text = "MEDIUM",
+                                reactionCount = count,
+                                size = MdsReactionButtonSize.MEDIUM,
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                            ) {
+                                count++
+                            }
+
+                            MdsReactionButton(
+                                text = "MEDIUM",
+                                reactionCount = count,
+                                size = MdsReactionButtonSize.MEDIUM,
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                                prefixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
                             }
@@ -291,7 +457,9 @@ class ButtonActivity : ComponentActivity() {
                                 reactionCount = count,
                                 enabled = false,
                                 size = MdsReactionButtonSize.MEDIUM,
-                                type = MdsReactionButtonType.UNSELECTED
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                                prefixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
                             }
@@ -299,14 +467,24 @@ class ButtonActivity : ComponentActivity() {
 
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .horizontalScroll(rememberScrollState())
                         ) {
                             MdsReactionButton(
                                 text = "LARGE",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.LARGE,
-                                type = MdsReactionButtonType.SELECTED,
-                                suffixIcon = R.drawable.ic_plus_outlined,
+                                type = reactionButtonType
+                            ) {
+                                count++
+                            }
+
+                            MdsReactionButton(
+                                text = "LARGE",
+                                reactionCount = count,
+                                size = MdsReactionButtonSize.LARGE,
+                                type = reactionButtonType,
                                 prefixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
@@ -316,19 +494,34 @@ class ButtonActivity : ComponentActivity() {
                                 text = "LARGE",
                                 reactionCount = count,
                                 size = MdsReactionButtonSize.LARGE,
-                                type = MdsReactionButtonType.UNSELECTED
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_plus_outlined
                             ) {
                                 count++
                             }
-                        }
-                        MdsReactionButton(
-                            text = "LARGE",
-                            reactionCount = count,
-                            enabled = false,
-                            size = MdsReactionButtonSize.LARGE,
-                            type = MdsReactionButtonType.UNSELECTED
-                        ) {
-                            count++
+
+                            MdsReactionButton(
+                                text = "LARGE",
+                                reactionCount = count,
+                                size = MdsReactionButtonSize.LARGE,
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                                prefixIcon = R.drawable.ic_plus_outlined
+                            ) {
+                                count++
+                            }
+
+                            MdsReactionButton(
+                                text = "LARGE",
+                                reactionCount = count,
+                                enabled = false,
+                                size = MdsReactionButtonSize.LARGE,
+                                type = reactionButtonType,
+                                suffixIcon = R.drawable.ic_chevron_right_outlined,
+                                prefixIcon = R.drawable.ic_plus_outlined
+                            ) {
+                                count++
+                            }
                         }
 
                         Text(
@@ -362,6 +555,8 @@ class ButtonActivity : ComponentActivity() {
                                 type = MdsFloatingButtonType.EXPANDED
                             ) { }
                         }
+
+                        Spacer(Modifier.height(20.dp))
                     }
                 }
             }
