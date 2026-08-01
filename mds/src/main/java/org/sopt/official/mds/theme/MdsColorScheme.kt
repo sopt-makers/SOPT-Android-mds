@@ -13,6 +13,7 @@ import org.sopt.official.mds.foundation.base.gray500
 import org.sopt.official.mds.foundation.base.gray600
 import org.sopt.official.mds.foundation.base.gray700
 import org.sopt.official.mds.foundation.base.gray800
+import org.sopt.official.mds.foundation.base.gray900
 import org.sopt.official.mds.foundation.base.gray950
 import org.sopt.official.mds.foundation.base.green100
 import org.sopt.official.mds.foundation.base.green400
@@ -74,7 +75,13 @@ val DarkMdsColorScheme = MdsColors(
             defaultPressed = red600,
             ghost = red950
         ),
-        dim = MdsBgColors.Dim(default = gray950.copy(alpha = 0.8f))
+        dim = MdsBgColors.Dim(default = gray950.copy(alpha = 0.8f)),
+        layer = MdsBgColors.Layer(
+            basement = gray950,
+            basementHover = gray800,
+            default = gray900,
+            defaultHover = gray800
+        )
     ),
     fg = MdsFgColors(
         neutral = MdsFgColors.Neutral(

@@ -19,7 +19,8 @@ data class MdsBgColors(
     val danger: Danger,
     val success: Success,
     val information: Information,
-    val dim: Dim
+    val dim: Dim,
+    val layer: Layer
 ) {
     data class Neutral(
         val inverse: Color,
@@ -58,6 +59,12 @@ data class MdsBgColors(
     data class Success(val ghost: Color)
     data class Information(val ghost: Color)
     data class Dim(val default: Color)
+    data class Layer(
+        val basement: Color,
+        val basementHover: Color,
+        val default: Color,
+        val defaultHover: Color
+    )
 }
 
 @Immutable
