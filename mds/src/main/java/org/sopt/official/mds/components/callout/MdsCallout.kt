@@ -55,12 +55,12 @@ fun MdsCallout(
         }
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(18.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.Start
         ) {
             Text(
                 text = text,
-                style = SoptTheme.typography.body.b2,
+                style = SoptTheme.typography.body2,
                 color = colors.text
             )
 

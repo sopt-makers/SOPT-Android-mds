@@ -9,24 +9,43 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
+import org.sopt.official.mds.components.chip.MdsChip
 import org.sopt.official.mds.theme.SoptTheme
+import org.sopt.official.mds.theme.blueTokens
+import org.sopt.official.mds.theme.grayTokens
+import org.sopt.official.mds.theme.greenTokens
+import org.sopt.official.mds.theme.orangeTokens
+import org.sopt.official.mds.theme.redTokens
+import org.sopt.official.mds.theme.yellowTokens
 
 class ThemeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +58,50 @@ class ThemeActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
-                    TokenShowcaseScreen(
+                    val tabs = listOf("Typography", "Colors")
+
+                    val pagerState = rememberPagerState(
+                        initialPage = 0,
+                        pageCount = { 2 }
+                    )
+                    val scope = rememberCoroutineScope()
+
+                    Column(
                         modifier = Modifier
                             .padding(it)
-                    )
+                    ) {
+                        PrimaryTabRow(
+                            selectedTabIndex = pagerState.currentPage,
+                            containerColor = SoptTheme.colors.bg.layer.basement,
+                            contentColor = SoptTheme.colors.fg.neutral.default
+                        ) {
+                            tabs.forEachIndexed { index, title ->
+                                Tab(
+                                    selected = pagerState.currentPage == index,
+                                    onClick = {
+                                        scope.launch {
+                                            pagerState.animateScrollToPage(index)
+                                        }
+                                    },
+                                    text = {
+                                        Text(
+                                            text = title,
+                                            style = SoptTheme.typography.title4
+                                        )
+                                    }
+                                )
+                            }
+                        }
+                        HorizontalPager(
+                            state = pagerState,
+                            modifier = Modifier.fillMaxSize()
+                        ) { page ->
+                            when (page) {
+                                0 -> TypographySection()
+                                1 -> ColorsSection()
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -50,74 +109,64 @@ class ThemeActivity : ComponentActivity() {
 }
 
 @Composable
-fun TokenShowcaseScreen(
-    modifier: Modifier
+fun TypographyCard(
+    title: String,
+    textStyle: TextStyle,
+    modifier: Modifier = Modifier
 ) {
-    LazyColumn(
+    Column(
         modifier = modifier
-            .fillMaxSize()
-            .background(SoptTheme.colors.bg.neutral.default)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(24.dp)
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .background(SoptTheme.colors.bg.layer.default)
+            .padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+        Text(
+            text = title,
+            style = textStyle,
+            color = SoptTheme.colors.fg.neutral.bold
+        )
 
-        item {
-            SectionTitle("Typography")
-        }
+        Text(
+            text = "가나다라\nABCD\n12345",
+            style = textStyle,
+            color = SoptTheme.colors.fg.neutral.bold
+        )
 
-        item {
-            TypographySection()
-        }
-
-        item {
-            SectionTitle("Background")
-        }
-
-        item {
-            BgColorSection()
-        }
-
-        item {
-            SectionTitle("Foreground")
-        }
-
-        item {
-            FgColorSection()
-        }
-
-        item {
-            SectionTitle(
-                "Stroke"
-            )
-        }
-
-        item {
-            StrokeColorSection()
-        }
+        Text(
+            text = buildString {
+                append(textStyle.fontSize.value.toInt())
+                append("sp")
+            },
+            style = textStyle,
+            color = SoptTheme.colors.fg.neutral.subtle
+        )
     }
 }
 
 @Composable
-fun SectionTitle(text: String) {
-    Text(
-        text = text,
-        style = SoptTheme.typography.heading.h3,
-        color = SoptTheme.colors.fg.neutral.bold
-    )
-}
-
-@Composable
-fun ColorItem(
+fun ColorCard(
     name: String,
-    color: Color
+    color: Color,
+    modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = modifier
+            .clip(RoundedCornerShape(12.dp))
+            .background(SoptTheme.colors.bg.layer.default)
+            .border(
+                1.dp,
+                SoptTheme.colors.stroke.neutral.subtle,
+                RoundedCornerShape(12.dp)
+            )
+            .padding(12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Box(
             modifier = Modifier
-                .size(48.dp)
+                .fillMaxWidth()
+                .height(72.dp)
                 .clip(RoundedCornerShape(8.dp))
                 .background(color)
                 .border(
@@ -127,208 +176,361 @@ fun ColorItem(
                 )
         )
 
-        Spacer(Modifier.width(12.dp))
+        Column(
+            verticalArrangement = Arrangement.spacedBy(2.dp)
+        ) {
+            Text(
+                text = name,
+                style = SoptTheme.typography.label3,
+                color = SoptTheme.colors.fg.neutral.bold,
+                minLines = 2,
+            )
 
-        Text(
-            text = name,
-            style = SoptTheme.typography.body.b2,
-            color = SoptTheme.colors.fg.neutral.bold
-        )
+            Text(
+                text = "#${String.format("%06X", color.toArgb() and 0xFFFFFF)}",
+                style = SoptTheme.typography.body3,
+                color = SoptTheme.colors.fg.neutral.default
+            )
+        }
     }
 }
 
 @Composable
-fun TypographySection() {
-    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+private fun TypographySection() {
+    val typographyItems = listOf(
+        "heading1" to SoptTheme.typography.heading1,
+        "heading2" to SoptTheme.typography.heading2,
+        "heading3" to SoptTheme.typography.heading3,
+        "heading4" to SoptTheme.typography.heading4,
 
-        Text(
-            text = "heading.h1",
-            style = SoptTheme.typography.heading.h1,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "heading.h2",
-            style = SoptTheme.typography.heading.h2,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "heading.h3",
-            style = SoptTheme.typography.heading.h3,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "heading.h4",
-            style = SoptTheme.typography.heading.h4,
-            color = SoptTheme.colors.fg.neutral.default
-        )
+        "title1" to SoptTheme.typography.title1,
+        "title2" to SoptTheme.typography.title2,
+        "title3" to SoptTheme.typography.title3,
+        "title4" to SoptTheme.typography.title4,
+        "title5" to SoptTheme.typography.title5,
 
-        Text(
-            text = "title.t1",
-            style = SoptTheme.typography.title.t1,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "title.t2",
-            style = SoptTheme.typography.title.t2,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "title.t3",
-            style = SoptTheme.typography.title.t3,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "title.t4",
-            style = SoptTheme.typography.title.t4,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "title.t5",
-            style = SoptTheme.typography.title.t5,
-            color = SoptTheme.colors.fg.neutral.default
-        )
+        "body1" to SoptTheme.typography.body1,
+        "body2" to SoptTheme.typography.body2,
+        "body3" to SoptTheme.typography.body3,
 
-        Text(
-            text = "body.b1",
-            style = SoptTheme.typography.body.b1,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "body.b2",
-            style = SoptTheme.typography.body.b2,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "body.b3",
-            style = SoptTheme.typography.body.b3,
-            color = SoptTheme.colors.fg.neutral.default
-        )
+        "label1" to SoptTheme.typography.label1,
+        "label2" to SoptTheme.typography.label2,
+        "label3" to SoptTheme.typography.label3,
+        "label4" to SoptTheme.typography.label4,
+    )
 
-        Text(
-            text = "label.l1",
-            style = SoptTheme.typography.label.l1,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "label.l2",
-            style = SoptTheme.typography.label.l2,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "label.l3",
-            style = SoptTheme.typography.label.l3,
-            color = SoptTheme.colors.fg.neutral.default
-        )
-        Text(
-            text = "label.l4",
-            style = SoptTheme.typography.label.l4,
-            color = SoptTheme.colors.fg.neutral.default
-        )
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(typographyItems.size) {
+            TypographyCard(
+                typographyItems[it].first,
+                typographyItems[it].second
+            )
+        }
     }
 }
 
 @Composable
-fun BgColorSection() {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+private fun ColorsSection() {
+    var colorType by remember { mutableStateOf("Base") }
 
-        ColorItem("bg.neutral.inverse", SoptTheme.colors.bg.neutral.inverse)
-        ColorItem("bg.neutral.inverseHover", SoptTheme.colors.bg.neutral.inverseHover)
-        ColorItem("bg.neutral.inversePressed", SoptTheme.colors.bg.neutral.inversePressed)
+    Column(
+        modifier = Modifier.padding(top = 16.dp)
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            MdsChip(
+                text = "Base Token",
+                selected = colorType == "Base",
+            ) {
+                colorType = "Base"
+            }
 
-        ColorItem("bg.neutral.bold", SoptTheme.colors.bg.neutral.bold)
-        ColorItem("bg.neutral.boldDisabled", SoptTheme.colors.bg.neutral.boldDisabled)
+            MdsChip(
+                text = "Semantic Token",
+                selected = colorType == "Semantic",
+            ) {
+                colorType = "Semantic"
+            }
+        }
 
-        ColorItem("bg.neutral.default", SoptTheme.colors.bg.neutral.default)
-        ColorItem("bg.neutral.defaultHover", SoptTheme.colors.bg.neutral.defaultHover)
-        ColorItem("bg.neutral.defaultPressed", SoptTheme.colors.bg.neutral.defaultPressed)
-        ColorItem("bg.neutral.defaultDisabled", SoptTheme.colors.bg.neutral.defaultDisabled)
-
-        ColorItem("bg.neutral.subtle", SoptTheme.colors.bg.neutral.subtle)
-        ColorItem("bg.neutral.subtleHover", SoptTheme.colors.bg.neutral.subtleHover)
-        ColorItem("bg.neutral.subtlePressed", SoptTheme.colors.bg.neutral.subtlePressed)
-
-        ColorItem("bg.neutral.ghost", SoptTheme.colors.bg.neutral.ghost)
-        ColorItem("bg.neutral.ghostHover", SoptTheme.colors.bg.neutral.ghostHover)
-        ColorItem("bg.neutral.ghostPressed", SoptTheme.colors.bg.neutral.ghostPressed)
-
-        ColorItem("bg.brand.default", SoptTheme.colors.bg.brand.default)
-        ColorItem("bg.brand.subtle", SoptTheme.colors.bg.brand.subtle)
-        ColorItem("bg.brand.ghost", SoptTheme.colors.bg.brand.ghost)
-
-        ColorItem("bg.secondary.default", SoptTheme.colors.bg.secondary.default)
-        ColorItem("bg.secondary.defaultHover", SoptTheme.colors.bg.secondary.defaultHover)
-        ColorItem("bg.secondary.defaultPressed", SoptTheme.colors.bg.secondary.defaultPressed)
-        ColorItem("bg.secondary.subtle", SoptTheme.colors.bg.secondary.subtle)
-        ColorItem("bg.secondary.ghost", SoptTheme.colors.bg.secondary.ghost)
-
-        ColorItem("bg.danger.default", SoptTheme.colors.bg.danger.default)
-        ColorItem("bg.danger.defaultHover", SoptTheme.colors.bg.danger.defaultHover)
-        ColorItem("bg.danger.defaultPressed", SoptTheme.colors.bg.danger.defaultPressed)
-        ColorItem("bg.danger.ghost", SoptTheme.colors.bg.danger.ghost)
-
-        ColorItem("bg.success.ghost", SoptTheme.colors.bg.success.ghost)
-        ColorItem("bg.information.ghost", SoptTheme.colors.bg.information.ghost)
-        ColorItem("bg.dim.default", SoptTheme.colors.bg.dim.default)
-
-        ColorItem("bg.layer.basement", SoptTheme.colors.bg.layer.basement)
-        ColorItem("bg.layer.basementHover", SoptTheme.colors.bg.layer.basementHover)
-        ColorItem("bg.layer.default", SoptTheme.colors.bg.layer.default)
-        ColorItem("bg.layer.defaultHover", SoptTheme.colors.bg.layer.defaultHover)
+        if (colorType == "Base") {
+            BaseColorTokenSection()
+        } else {
+            SemanticColorTokenSection()
+        }
     }
 }
 
 @Composable
-fun FgColorSection() {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+private fun BaseColorTokenSection() {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Gray",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
 
-        ColorItem("fg.neutral.bold", SoptTheme.colors.fg.neutral.bold)
-        ColorItem("fg.neutral.default", SoptTheme.colors.fg.neutral.default)
-        ColorItem("fg.neutral.defaultDisabled", SoptTheme.colors.fg.neutral.defaultDisabled)
-        ColorItem("fg.neutral.subtle", SoptTheme.colors.fg.neutral.subtle)
-        ColorItem("fg.neutral.ghost", SoptTheme.colors.fg.neutral.ghost)
-        ColorItem("fg.neutral.ghostDisabled", SoptTheme.colors.fg.neutral.ghostDisabled)
-        ColorItem("fg.neutral.inverse", SoptTheme.colors.fg.neutral.inverse)
+        items(grayTokens.size) {
+            ColorCard(
+                name = grayTokens[it].name,
+                color = grayTokens[it].color
+            )
+        }
 
-        ColorItem("fg.brand.default", SoptTheme.colors.fg.brand.default)
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Orange",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
 
-        ColorItem("fg.secondary.default", SoptTheme.colors.fg.secondary.default)
+        items(orangeTokens.size) {
+            ColorCard(
+                name = orangeTokens[it].name,
+                color = orangeTokens[it].color
+            )
+        }
 
-        ColorItem("fg.success.bold", SoptTheme.colors.fg.success.bold)
-        ColorItem("fg.success.default", SoptTheme.colors.fg.success.default)
-        ColorItem("fg.success.subtle", SoptTheme.colors.fg.success.subtle)
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Blue",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
 
-        ColorItem("fg.danger.bold", SoptTheme.colors.fg.danger.bold)
-        ColorItem("fg.danger.default", SoptTheme.colors.fg.danger.default)
-        ColorItem("fg.danger.subtle", SoptTheme.colors.fg.danger.subtle)
+        items(blueTokens.size) {
+            ColorCard(
+                name = blueTokens[it].name,
+                color = blueTokens[it].color
+            )
+        }
 
-        ColorItem("fg.attention.bold", SoptTheme.colors.fg.attention.bold)
-        ColorItem("fg.attention.default", SoptTheme.colors.fg.attention.default)
-        ColorItem("fg.attention.subtle", SoptTheme.colors.fg.attention.subtle)
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Red",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
 
-        ColorItem("fg.information.default", SoptTheme.colors.fg.information.default)
-        ColorItem("fg.information.subtle", SoptTheme.colors.fg.information.subtle)
+        items(redTokens.size) {
+            ColorCard(
+                name = redTokens[it].name,
+                color = redTokens[it].color
+            )
+        }
+
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Green",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
+
+        items(greenTokens.size) {
+            ColorCard(
+                name = greenTokens[it].name,
+                color = greenTokens[it].color
+            )
+        }
+
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Yellow",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
+
+        items(yellowTokens.size) {
+            ColorCard(
+                name = yellowTokens[it].name,
+                color = yellowTokens[it].color
+            )
+        }
     }
 }
 
 @Composable
-fun StrokeColorSection() {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+private fun SemanticColorTokenSection() {
+    val bgColors = listOf(
+        "neutral.inverse" to SoptTheme.colors.bg.neutral.inverse,
+        "neutral.inverseHover" to SoptTheme.colors.bg.neutral.inverseHover,
+        "neutral.inversePressed" to SoptTheme.colors.bg.neutral.inversePressed,
+        "neutral.bold" to SoptTheme.colors.bg.neutral.bold,
+        "neutral.boldDisabled" to SoptTheme.colors.bg.neutral.boldDisabled,
+        "neutral.default" to SoptTheme.colors.bg.neutral.default,
+        "neutral.defaultHover" to SoptTheme.colors.bg.neutral.defaultHover,
+        "neutral.defaultPressed" to SoptTheme.colors.bg.neutral.defaultPressed,
+        "neutral.defaultDisabled" to SoptTheme.colors.bg.neutral.defaultDisabled,
+        "neutral.subtle" to SoptTheme.colors.bg.neutral.subtle,
+        "neutral.subtleHover" to SoptTheme.colors.bg.neutral.subtleHover,
+        "neutral.subtlePressed" to SoptTheme.colors.bg.neutral.subtlePressed,
+        "neutral.ghost" to SoptTheme.colors.bg.neutral.ghost,
+        "neutral.ghostHover" to SoptTheme.colors.bg.neutral.ghostHover,
+        "neutral.ghostPressed" to SoptTheme.colors.bg.neutral.ghostPressed,
 
-        ColorItem("stroke.neutral.default", SoptTheme.colors.stroke.neutral.default)
-        ColorItem("stroke.neutral.defaultFocused", SoptTheme.colors.stroke.neutral.defaultFocused)
-        ColorItem("stroke.neutral.defaultDisabled", SoptTheme.colors.stroke.neutral.defaultDisabled)
-        ColorItem("stroke.neutral.inverse", SoptTheme.colors.stroke.neutral.inverse)
-        ColorItem("stroke.neutral.subtle", SoptTheme.colors.stroke.neutral.subtle)
-        ColorItem("stroke.neutral.ghost", SoptTheme.colors.stroke.neutral.ghost)
+        "brand.default" to SoptTheme.colors.bg.brand.default,
+        "brand.subtle" to SoptTheme.colors.bg.brand.subtle,
+        "brand.ghost" to SoptTheme.colors.bg.brand.ghost,
 
-        ColorItem("stroke.brand.default", SoptTheme.colors.stroke.brand.default)
-        ColorItem("stroke.brand.subtle", SoptTheme.colors.stroke.brand.subtle)
+        "secondary.default" to SoptTheme.colors.bg.secondary.default,
+        "secondary.defaultHover" to SoptTheme.colors.bg.secondary.defaultHover,
+        "secondary.defaultPressed" to SoptTheme.colors.bg.secondary.defaultPressed,
+        "secondary.subtle" to SoptTheme.colors.bg.secondary.subtle,
+        "secondary.ghost" to SoptTheme.colors.bg.secondary.ghost,
 
-        ColorItem("stroke.secondary.default", SoptTheme.colors.stroke.secondary.default)
-        ColorItem("stroke.secondary.subtle", SoptTheme.colors.stroke.secondary.subtle)
+        "information.ghost" to SoptTheme.colors.bg.information.ghost,
 
-        ColorItem("stroke.information.subtle", SoptTheme.colors.stroke.information.subtle)
+        "success.ghost" to SoptTheme.colors.bg.success.ghost,
 
-        ColorItem("stroke.danger.default", SoptTheme.colors.stroke.danger.default)
+        "danger.default" to SoptTheme.colors.bg.danger.default,
+        "danger.defaultHover" to SoptTheme.colors.bg.danger.defaultHover,
+        "danger.defaultPressed" to SoptTheme.colors.bg.danger.defaultPressed,
+        "danger.ghost" to SoptTheme.colors.bg.danger.ghost,
+
+        "dim.default" to SoptTheme.colors.bg.dim.default,
+
+        "layer.basement" to SoptTheme.colors.bg.layer.basement,
+        "layer.basementHover" to SoptTheme.colors.bg.layer.basementHover,
+        "layer.default" to SoptTheme.colors.bg.layer.default,
+        "layer.defaultHover" to SoptTheme.colors.bg.layer.defaultHover
+    )
+
+    val fgColors = listOf(
+        "neutral.bold" to SoptTheme.colors.fg.neutral.bold,
+        "neutral.default" to SoptTheme.colors.fg.neutral.default,
+        "neutral.defaultDisabled" to SoptTheme.colors.fg.neutral.defaultDisabled,
+        "neutral.subtle" to SoptTheme.colors.fg.neutral.subtle,
+        "neutral.ghost" to SoptTheme.colors.fg.neutral.ghost,
+        "neutral.ghostDisabled" to SoptTheme.colors.fg.neutral.ghostDisabled,
+        "neutral.inverse" to SoptTheme.colors.fg.neutral.inverse,
+
+        "brand.default" to SoptTheme.colors.fg.brand.default,
+
+        "secondary.default" to SoptTheme.colors.fg.secondary.default,
+
+        "success.bold" to SoptTheme.colors.fg.success.bold,
+        "success.default" to SoptTheme.colors.fg.success.default,
+        "success.subtle" to SoptTheme.colors.fg.success.subtle,
+
+        "danger.bold" to SoptTheme.colors.fg.danger.bold,
+        "danger.default" to SoptTheme.colors.fg.danger.default,
+        "danger.subtle" to SoptTheme.colors.fg.danger.subtle,
+
+        "attention.bold" to SoptTheme.colors.fg.attention.bold,
+        "attention.default" to SoptTheme.colors.fg.attention.default,
+        "attention.subtle" to SoptTheme.colors.fg.attention.subtle,
+
+        "information.default" to SoptTheme.colors.fg.information.default,
+        "information.subtle" to SoptTheme.colors.fg.information.subtle
+    )
+
+    val strokeColors = listOf(
+        "neutral.default" to SoptTheme.colors.stroke.neutral.default,
+        "neutral.defaultFocused" to SoptTheme.colors.stroke.neutral.defaultFocused,
+        "neutral.defaultDisabled" to SoptTheme.colors.stroke.neutral.defaultDisabled,
+        "neutral.inverse" to SoptTheme.colors.stroke.neutral.inverse,
+        "neutral.subtle" to SoptTheme.colors.stroke.neutral.subtle,
+        "neutral.ghost" to SoptTheme.colors.stroke.neutral.ghost,
+
+        "brand.default" to SoptTheme.colors.stroke.brand.default,
+        "brand.subtle" to SoptTheme.colors.stroke.brand.subtle,
+
+        "secondary.default" to SoptTheme.colors.stroke.secondary.default,
+        "secondary.subtle" to SoptTheme.colors.stroke.secondary.subtle,
+
+        "information.subtle" to SoptTheme.colors.stroke.information.subtle,
+
+        "danger.default" to SoptTheme.colors.stroke.danger.default
+    )
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Background",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
+
+        items(bgColors.size) {
+            ColorCard(
+                name = bgColors[it].first,
+                color = bgColors[it].second
+            )
+        }
+
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Foreground",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
+
+        items(fgColors.size) {
+            ColorCard(
+                name = fgColors[it].first,
+                color = fgColors[it].second
+            )
+        }
+
+        item(
+            span = { GridItemSpan(maxLineSpan) }
+        ) {
+            Text(
+                text = "Stroke",
+                style = SoptTheme.typography.heading4,
+                color = SoptTheme.colors.fg.neutral.bold
+            )
+        }
+
+        items(strokeColors.size) {
+            ColorCard(
+                name = strokeColors[it].first,
+                color = strokeColors[it].second
+            )
+        }
     }
 }

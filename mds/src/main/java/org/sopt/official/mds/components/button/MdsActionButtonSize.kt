@@ -26,20 +26,20 @@ enum class MdsActionButtonSize(
     SMALL(
         iconSize = 16.dp,
         horizontalPadding = 12.dp,
-        verticalPadding = 9.dp,
+        verticalPadding = 10.dp,
         spacedBy = 4.dp,
         shape = RoundedCornerShape(SoptTheme.radius.r8)
     ),
     MEDIUM(
         iconSize = 20.dp,
-        horizontalPadding = 20.dp,
+        horizontalPadding = 16.dp,
         verticalPadding = 12.dp,
         spacedBy = 4.dp,
         shape = RoundedCornerShape(SoptTheme.radius.r10)
     ),
     LARGE(
         iconSize = 24.dp,
-        horizontalPadding = 24.dp,
+        horizontalPadding = 20.dp,
         verticalPadding = 16.dp,
         spacedBy = 4.dp,
         shape = RoundedCornerShape(SoptTheme.radius.r12)
@@ -48,9 +48,9 @@ enum class MdsActionButtonSize(
     @Composable
     fun textStyle(): TextStyle =
         when (this) {
-            XSMALL -> SoptTheme.typography.label.l4
-            SMALL -> SoptTheme.typography.label.l3
-            MEDIUM -> SoptTheme.typography.label.l2
-            LARGE -> SoptTheme.typography.label.l1
+            XSMALL -> SoptTheme.typography.label4
+            SMALL -> SoptTheme.typography.label3
+            MEDIUM -> SoptTheme.typography.label2
+            LARGE -> SoptTheme.typography.label1
         }
 }

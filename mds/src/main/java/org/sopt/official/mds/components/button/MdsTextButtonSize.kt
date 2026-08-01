@@ -16,7 +16,7 @@ enum class MdsTextButtonSize(
     @Composable
     fun textStyle(): TextStyle =
         when (this) {
-            SMALL -> SoptTheme.typography.label.l4
-            MEDIUM -> SoptTheme.typography.label.l3
+            SMALL -> SoptTheme.typography.label4
+            MEDIUM -> SoptTheme.typography.label3
         }
 }

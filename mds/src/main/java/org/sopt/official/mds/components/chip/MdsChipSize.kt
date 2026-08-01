@@ -22,8 +22,8 @@ enum class MdsChipSize(
     @Composable
     internal fun typography(): TextStyle {
         return when (this) {
-            SMALL -> SoptTheme.typography.label.l3
-            MEDIUM -> SoptTheme.typography.label.l2
+            SMALL -> SoptTheme.typography.label3
+            MEDIUM -> SoptTheme.typography.label2
         }
     }
 }

@@ -81,7 +81,7 @@ class DialogActivity : ComponentActivity() {
                     ) {
                         Text(
                             text = "Dialog",
-                            style = SoptTheme.typography.title.t1,
+                            style = SoptTheme.typography.title1,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 20.dp)
@@ -89,7 +89,7 @@ class DialogActivity : ComponentActivity() {
 
                         Text(
                             text = "Dialog type",
-                            style = SoptTheme.typography.body.b1,
+                            style = SoptTheme.typography.body1,
                             color = SoptTheme.colors.fg.neutral.default,
                         )
 
@@ -110,7 +110,7 @@ class DialogActivity : ComponentActivity() {
 
                         Text(
                             text = "Dialog title",
-                            style = SoptTheme.typography.body.b1,
+                            style = SoptTheme.typography.body1,
                             color = SoptTheme.colors.fg.neutral.default,
                         )
 
@@ -121,7 +121,7 @@ class DialogActivity : ComponentActivity() {
 
                         Text(
                             text = "Dialog description",
-                            style = SoptTheme.typography.body.b1,
+                            style = SoptTheme.typography.body1,
                             color = SoptTheme.colors.fg.neutral.default,
                         )
 
@@ -142,7 +142,7 @@ class DialogActivity : ComponentActivity() {
 
                         Text(
                             text = "Checkbox",
-                            style = SoptTheme.typography.body.b1,
+                            style = SoptTheme.typography.body1,
                             color = SoptTheme.colors.fg.neutral.default,
                         )
 

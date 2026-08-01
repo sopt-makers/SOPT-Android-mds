@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
@@ -61,14 +62,14 @@ fun MdsTextArea(
                 label?.let {
                     Text(
                         text = label,
-                        style = SoptTheme.typography.title.t5,
+                        style = SoptTheme.typography.title5,
                         color = SoptTheme.colors.fg.neutral.bold
                     )
 
                     if (required) {
                         Text(
                             text = "*",
-                            style = SoptTheme.typography.title.t5,
+                            style = SoptTheme.typography.title5,
                             color = SoptTheme.colors.fg.brand.default
                         )
                     }
@@ -79,7 +80,7 @@ fun MdsTextArea(
         description?.let {
             Text(
                 text = description,
-                style = SoptTheme.typography.body.b2,
+                style = SoptTheme.typography.body2,
                 color = SoptTheme.colors.fg.neutral.default
             )
         }
@@ -89,7 +90,7 @@ fun MdsTextArea(
         MdsBasicTextField(
             state = state,
             modifier = modifier,
-            textStyle = SoptTheme.typography.body.b1.copy(
+            textStyle = SoptTheme.typography.body1.copy(
                 color = SoptTheme.colors.fg.neutral.bold
             ),
             interactionSource = interactionSource,
@@ -100,7 +101,8 @@ fun MdsTextArea(
                     inputType = inputType,
                     placeholder = placeholder,
                     innerTextField = innerTextField,
-                    showActionIcon = showActionIcon
+                    showActionIcon = showActionIcon,
+                    isError = isError
                 )
             },
             onKeyboardAction = onKeyboardAction,
@@ -122,25 +124,27 @@ private fun MdsTextAreaDecorator(
     state: TextFieldState,
     interactionSource: MutableInteractionSource,
     inputType: MdsInputType,
-    placeholder: String? = null,
-    isError: Boolean = false,
-    showActionIcon: Boolean = false,
+    placeholder: String?,
+    isError: Boolean,
+    showActionIcon: Boolean,
     innerTextField: @Composable () -> Unit
 ) {
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val modifierWithBorder = Modifier.border(
-        1.dp,
-        if (isError) SoptTheme.colors.stroke.danger.default else SoptTheme.colors.stroke.neutral.defaultFocused,
-        RoundedCornerShape(10.dp)
-    )
+    val strokeColor = when {
+        isError -> SoptTheme.colors.stroke.danger.default
+        focused -> SoptTheme.colors.stroke.neutral.defaultFocused
+        else -> Color.Transparent
+    }
 
     MdsBasicDecorator(
         state = state,
         modifier = Modifier
             .heightIn(max = 150.dp)
-            .then(
-                if (focused) modifierWithBorder else Modifier
+            .border(
+                1.dp,
+                strokeColor,
+                RoundedCornerShape(10.dp)
             )
             .clip(RoundedCornerShape(10.dp))
             .background(
@@ -154,7 +158,7 @@ private fun MdsTextAreaDecorator(
             placeholder?.let {
                 Text(
                     text = placeholder,
-                    style = SoptTheme.typography.body.b1,
+                    style = SoptTheme.typography.body1,
                     color = SoptTheme.colors.fg.neutral.ghost
                 )
             }
@@ -186,9 +190,11 @@ private fun MdsTextAreaFooter(
     if (helperText.isNullOrBlank() && errorText.isNullOrBlank() && maxLength == null) return
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 6.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.Bottom
+        verticalAlignment = Alignment.CenterVertically
     ) {
         if (isError && !errorText.isNullOrBlank()) {
             Icon(
@@ -203,7 +209,7 @@ private fun MdsTextAreaFooter(
 
         Text(
             text = (if (isError) errorText else helperText) ?: "",
-            style = SoptTheme.typography.body.b3,
+            style = SoptTheme.typography.body3,
             color = if (isError) SoptTheme.colors.fg.danger.default else SoptTheme.colors.fg.neutral.ghost,
             modifier = Modifier.weight(1f)
         )
@@ -211,7 +217,7 @@ private fun MdsTextAreaFooter(
         maxLength?.let {
             Text(
                 text = "$currentLength/$maxLength",
-                style = SoptTheme.typography.body.b3,
+                style = SoptTheme.typography.body3,
                 color = SoptTheme.colors.fg.neutral.ghost
             )
         }

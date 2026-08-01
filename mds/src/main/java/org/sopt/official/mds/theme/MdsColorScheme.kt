@@ -36,7 +36,7 @@ import org.sopt.official.mds.foundation.semantic.MdsColors
 import org.sopt.official.mds.foundation.semantic.MdsFgColors
 import org.sopt.official.mds.foundation.semantic.MdsStrokeColors
 
-val DarkMdsColorScheme = MdsColors(
+internal val DarkMdsColorScheme = MdsColors(
     bg = MdsBgColors(
         neutral = MdsBgColors.Neutral(
             inverse = gray10,

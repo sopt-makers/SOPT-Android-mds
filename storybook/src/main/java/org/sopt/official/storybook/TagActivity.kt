@@ -58,7 +58,7 @@ class TagActivity : ComponentActivity() {
                         var iconOn by remember { mutableStateOf(false) }
                         Text(
                             text = "Tag",
-                            style = SoptTheme.typography.title.t1,
+                            style = SoptTheme.typography.title1,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 20.dp)
@@ -87,7 +87,7 @@ class TagActivity : ComponentActivity() {
 
                             Text(
                                 text = "icon on",
-                                style = SoptTheme.typography.body.b1,
+                                style = SoptTheme.typography.body1,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
                         }

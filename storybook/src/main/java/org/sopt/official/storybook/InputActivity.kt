@@ -63,7 +63,7 @@ class InputActivity : ComponentActivity() {
                     ) {
                         Text(
                             text = "Input",
-                            style = SoptTheme.typography.title.t1,
+                            style = SoptTheme.typography.title1,
                             color = SoptTheme.colors.fg.neutral.bold,
                             modifier = Modifier
                                 .padding(vertical = 20.dp)
@@ -71,7 +71,7 @@ class InputActivity : ComponentActivity() {
 
                         Text(
                             text = "Search Field",
-                            style = SoptTheme.typography.title.t2,
+                            style = SoptTheme.typography.title2,
                             color = SoptTheme.colors.fg.neutral.default
                         )
 
@@ -110,7 +110,7 @@ class InputActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "show label",
-                                style = SoptTheme.typography.body.b1,
+                                style = SoptTheme.typography.body1,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 
@@ -126,7 +126,7 @@ class InputActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "required",
-                                style = SoptTheme.typography.body.b1,
+                                style = SoptTheme.typography.body1,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 
@@ -142,7 +142,7 @@ class InputActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "show description",
-                                style = SoptTheme.typography.body.b1,
+                                style = SoptTheme.typography.body1,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 
@@ -158,7 +158,7 @@ class InputActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "show helper text",
-                                style = SoptTheme.typography.body.b1,
+                                style = SoptTheme.typography.body1,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 
@@ -174,7 +174,7 @@ class InputActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "show max length",
-                                style = SoptTheme.typography.body.b1,
+                                style = SoptTheme.typography.body1,
                                 color = SoptTheme.colors.fg.neutral.default
                             )
 
@@ -186,7 +186,7 @@ class InputActivity : ComponentActivity() {
 
                         Text(
                             text = "Text Field",
-                            style = SoptTheme.typography.title.t2,
+                            style = SoptTheme.typography.title2,
                             color = SoptTheme.colors.fg.neutral.default
                         )
 
@@ -207,7 +207,7 @@ class InputActivity : ComponentActivity() {
 
                         Text(
                             text = "Text Area",
-                            style = SoptTheme.typography.title.t2,
+                            style = SoptTheme.typography.title2,
                             color = SoptTheme.colors.fg.neutral.default
                         )
 

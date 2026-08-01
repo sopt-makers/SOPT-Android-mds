@@ -7,7 +7,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import org.sopt.official.mds.R
 
-val MdsFontFamily = FontFamily(
+internal val MdsFontFamily = FontFamily(
     Font(R.font.suit_bold, FontWeight.Bold),
     Font(R.font.suit_semibold, FontWeight.SemiBold),
     Font(R.font.suit_regular, FontWeight.Normal)
