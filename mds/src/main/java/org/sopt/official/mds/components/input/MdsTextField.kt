@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
@@ -99,7 +100,8 @@ fun MdsTextField(
                     interactionSource = interactionSource,
                     inputType = inputType,
                     placeholder = placeholder,
-                    innerTextField = innerTextField
+                    innerTextField = innerTextField,
+                    isError = isError
                 )
             },
             inputTransformation = inputTransformation,
@@ -121,23 +123,25 @@ private fun MdsTextFieldDecorator(
     state: TextFieldState,
     interactionSource: MutableInteractionSource,
     inputType: MdsInputType,
-    placeholder: String? = null,
-    isError: Boolean = false,
+    placeholder: String?,
+    isError: Boolean,
     innerTextField: @Composable () -> Unit
 ) {
     val focused by interactionSource.collectIsFocusedAsState()
 
-    val modifierWithBorder = Modifier.border(
-        1.dp,
-        if (isError) SoptTheme.colors.stroke.danger.default else SoptTheme.colors.stroke.neutral.defaultFocused,
-        RoundedCornerShape(10.dp)
-    )
+    val strokeColor = when {
+        isError -> SoptTheme.colors.stroke.danger.default
+        focused -> SoptTheme.colors.stroke.neutral.defaultFocused
+        else -> Color.Transparent
+    }
 
     MdsBasicDecorator(
         state = state,
         modifier = Modifier
-            .then(
-                if (focused) modifierWithBorder else Modifier
+            .border(
+                1.dp,
+                strokeColor,
+                RoundedCornerShape(10.dp)
             )
             .clip(RoundedCornerShape(10.dp))
             .background(
@@ -175,7 +179,7 @@ private fun MdsTextFieldFooter(
             .fillMaxWidth()
             .padding(top = 6.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.Bottom
+        verticalAlignment = Alignment.CenterVertically
     ) {
         if (isError && !errorText.isNullOrBlank()) {
             Icon(

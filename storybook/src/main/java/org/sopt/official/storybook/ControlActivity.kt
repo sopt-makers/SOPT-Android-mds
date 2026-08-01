@@ -41,6 +41,7 @@ class ControlActivity : ComponentActivity() {
         setContent {
             SoptTheme() {
                 Scaffold(
+                    containerColor = SoptTheme.colors.bg.layer.basement,
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
