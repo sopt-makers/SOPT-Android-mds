@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import org.sopt.official.mds.R
 import org.sopt.official.mds.theme.SoptTheme
@@ -57,7 +58,10 @@ fun MdsTextButton(
             Text(
                 text = text,
                 style = size.textStyle(),
-                color = color
+                color = color,
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis,
             )
 
             Icon(
