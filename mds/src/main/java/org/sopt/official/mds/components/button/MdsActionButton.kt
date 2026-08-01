@@ -65,7 +65,8 @@ fun MdsActionButton(
             text = text,
             style = size.textStyle(),
             color = textColor,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            modifier = Modifier.weight(1f)
         )
 
         suffixIcon?.let {

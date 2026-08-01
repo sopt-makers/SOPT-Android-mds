@@ -55,7 +55,7 @@ fun MdsCallout(
         }
 
         Column(
-            verticalArrangement = Arrangement.spacedBy(18.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.Start
         ) {
             Text(

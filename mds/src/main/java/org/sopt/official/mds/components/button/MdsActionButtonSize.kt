@@ -26,20 +26,20 @@ enum class MdsActionButtonSize(
     SMALL(
         iconSize = 16.dp,
         horizontalPadding = 12.dp,
-        verticalPadding = 9.dp,
+        verticalPadding = 10.dp,
         spacedBy = 4.dp,
         shape = RoundedCornerShape(SoptTheme.radius.r8)
     ),
     MEDIUM(
         iconSize = 20.dp,
-        horizontalPadding = 20.dp,
+        horizontalPadding = 16.dp,
         verticalPadding = 12.dp,
         spacedBy = 4.dp,
         shape = RoundedCornerShape(SoptTheme.radius.r10)
     ),
     LARGE(
         iconSize = 24.dp,
-        horizontalPadding = 24.dp,
+        horizontalPadding = 20.dp,
         verticalPadding = 16.dp,
         spacedBy = 4.dp,
         shape = RoundedCornerShape(SoptTheme.radius.r12)
