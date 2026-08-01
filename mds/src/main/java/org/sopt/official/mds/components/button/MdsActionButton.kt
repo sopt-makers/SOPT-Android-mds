@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 
 @Composable
@@ -44,7 +45,7 @@ fun MdsActionButton(
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(size.spacedBy),
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier
             .clip(size.shape)
             .background(backgroundColor)
@@ -63,7 +64,8 @@ fun MdsActionButton(
         Text(
             text = text,
             style = size.textStyle(),
-            color = textColor
+            color = textColor,
+            textAlign = TextAlign.Center
         )
 
         suffixIcon?.let {

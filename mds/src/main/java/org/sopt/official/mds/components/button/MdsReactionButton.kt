@@ -42,7 +42,7 @@ fun MdsReactionButton(
     val (backgroundColor, strokeColor, textColor) = when {
         !enabled -> Triple(colors.disabledBackground, colors.disabledStroke, colors.disabledText)
         pressed -> Triple(colors.pressedBackground, colors.pressedStroke, colors.pressedText)
-        else -> Triple(colors.background, colors.stroke, colors.text)
+        else -> Triple(colors.background, colors.pressedStroke, colors.text)
     }
 
     Row(

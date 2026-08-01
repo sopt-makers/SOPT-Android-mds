@@ -10,12 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import coil3.compose.AsyncImagePainter
 import coil3.compose.SubcomposeAsyncImage
 import coil3.compose.SubcomposeAsyncImageContent
@@ -28,8 +30,22 @@ fun MdsAvatar(
     size: Dp,
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    contentScale: ContentScale = ContentScale.Crop
+    contentScale: ContentScale = ContentScale.Crop,
+    fallbackType: MdsAvatarFallbackType = MdsAvatarFallbackType.GHOST,
+    strokeColor: Color? = null
 ) {
+    val (backgroundColor, defaultStrokeColor) = when (fallbackType) {
+        MdsAvatarFallbackType.GHOST -> SoptTheme.colors.bg.neutral.ghost to SoptTheme.colors.stroke.neutral.ghost
+        MdsAvatarFallbackType.SUBTLE -> SoptTheme.colors.bg.neutral.subtle to SoptTheme.colors.stroke.neutral.subtle
+    }
+
+    val avatarStroke = when {
+        size < 48.dp -> 1.dp
+        size < 72.dp -> 2.dp
+        size < 180.dp -> 3.dp
+        else -> max(4.dp, size / 45)
+    }
+
     SubcomposeAsyncImage(
         model = imageUrl,
         contentDescription = contentDescription,
@@ -37,10 +53,10 @@ fun MdsAvatar(
         modifier = modifier
             .size(size)
             .clip(CircleShape)
-            .background(SoptTheme.colors.bg.neutral.ghost)
+            .background(backgroundColor)
             .border(
-                width = Dp.Hairline,
-                color = SoptTheme.colors.stroke.neutral.ghost,
+                width = avatarStroke,
+                color = strokeColor ?: defaultStrokeColor,
                 shape = CircleShape
             ),
     ) {
