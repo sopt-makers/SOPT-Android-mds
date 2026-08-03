@@ -33,6 +33,9 @@ import org.sopt.official.mds.components.button.MdsFloatingButtonType
 import org.sopt.official.mds.components.button.MdsReactionButton
 import org.sopt.official.mds.components.button.MdsReactionButtonSize
 import org.sopt.official.mds.components.button.MdsReactionButtonType
+import org.sopt.official.mds.components.button.MdsTextButton
+import org.sopt.official.mds.components.button.MdsTextButtonSize
+import org.sopt.official.mds.components.button.MdsTextButtonType
 import org.sopt.official.mds.components.chip.MdsChip
 import org.sopt.official.mds.theme.SoptTheme
 
@@ -542,8 +545,9 @@ class ButtonActivity : ComponentActivity() {
                                 enabled = false
                             ) { }
                         }
+
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             MdsFloatingButton(
                                 text = "Floating Button",
@@ -554,6 +558,63 @@ class ButtonActivity : ComponentActivity() {
                                 enabled = false,
                                 type = MdsFloatingButtonType.EXPANDED
                             ) { }
+                        }
+
+                        Text(
+                            text = "Text Button",
+                            style = SoptTheme.typography.title2,
+                            color = SoptTheme.colors.fg.neutral.bold,
+                            modifier = Modifier
+                                .padding(vertical = 10.dp)
+                        )
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(10.dp),
+                            ) {
+                                MdsTextButton(
+                                    text = "Small Emphasis",
+                                    size = MdsTextButtonSize.SMALL,
+                                    type = MdsTextButtonType.EMPHASIS
+                                ) { }
+
+                                MdsTextButton(
+                                    text = "Small Default",
+                                    size = MdsTextButtonSize.SMALL,
+                                    type = MdsTextButtonType.DEFAULT
+                                ) { }
+
+                                MdsTextButton(
+                                    text = "Small Disabled",
+                                    size = MdsTextButtonSize.SMALL,
+                                    type = MdsTextButtonType.DEFAULT,
+                                    enabled = false
+                                ) { }
+                            }
+
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(10.dp),
+                            ) {
+                                MdsTextButton(
+                                    text = "Medium Emphasis",
+                                    size = MdsTextButtonSize.MEDIUM,
+                                    type = MdsTextButtonType.EMPHASIS
+                                ) { }
+
+                                MdsTextButton(
+                                    text = "Medium Default",
+                                    size = MdsTextButtonSize.MEDIUM,
+                                    type = MdsTextButtonType.DEFAULT
+                                ) { }
+
+                                MdsTextButton(
+                                    text = "Medium Disabled",
+                                    size = MdsTextButtonSize.MEDIUM,
+                                    type = MdsTextButtonType.DEFAULT,
+                                    enabled = false
+                                ) { }
+                            }
                         }
 
                         Spacer(Modifier.height(20.dp))
