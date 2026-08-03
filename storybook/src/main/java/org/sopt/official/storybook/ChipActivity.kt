@@ -20,9 +20,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import org.sopt.official.mds.R
 import org.sopt.official.mds.components.chip.MdsChip
 import org.sopt.official.mds.components.chip.MdsChipSize
 import org.sopt.official.mds.components.chip.MdsChipType
+import org.sopt.official.mds.components.control.checkbox.MdsCheckbox
 import org.sopt.official.mds.components.control.toggle.MdsToggle
 import org.sopt.official.mds.components.control.toggle.MdsToggleSize
 import org.sopt.official.mds.theme.SoptTheme
@@ -42,6 +44,11 @@ class ChipActivity : ComponentActivity() {
                     var outlinedMedium by remember { mutableStateOf(0) }
                     var solidSmall by remember { mutableStateOf(0) }
                     var solidMedium by remember { mutableStateOf(0) }
+
+                    var prefixIconEnabled by remember { mutableStateOf(false) }
+                    var suffixIconEnabled by remember { mutableStateOf(false) }
+                    val prefixIcon = R.drawable.ic_plus_outlined
+                    val suffixIcon = R.drawable.ic_heart_outlined
 
                     Column(
                         verticalArrangement = Arrangement.spacedBy(30.dp),
@@ -69,9 +76,28 @@ class ChipActivity : ComponentActivity() {
                             )
                         }
 
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            modifier = Modifier.padding(horizontal = 20.dp)
+                        ) {
+                            MdsCheckbox(
+                                text = "Prefix Icon",
+                                selected = prefixIconEnabled,
+                            ) {
+                                prefixIconEnabled = !prefixIconEnabled
+                            }
+
+                            MdsCheckbox(
+                                text = "Suffix Icon",
+                                selected = suffixIconEnabled,
+                            ) {
+                                suffixIconEnabled = !suffixIconEnabled
+                            }
+                        }
+
                         LazyRow(
                             horizontalArrangement = Arrangement.spacedBy(5.dp),
-                            contentPadding = PaddingValues(horizontal = 10.dp)
+                            contentPadding = PaddingValues(horizontal = 20.dp)
                         ) {
                             items(5) {
                                 MdsChip(
@@ -80,14 +106,16 @@ class ChipActivity : ComponentActivity() {
                                     onClick = { outlinedSmall = it },
                                     size = MdsChipSize.SMALL,
                                     type = MdsChipType.OUTLINED,
-                                    enabled = chipEnabled
+                                    enabled = chipEnabled,
+                                    prefixIcon = if (prefixIconEnabled) prefixIcon else null,
+                                    suffixIcon = if (suffixIconEnabled) suffixIcon else null
                                 )
                             }
                         }
 
                         LazyRow(
                             horizontalArrangement = Arrangement.spacedBy(5.dp),
-                            contentPadding = PaddingValues(horizontal = 10.dp)
+                            contentPadding = PaddingValues(horizontal = 20.dp)
                         ) {
                             items(5) {
                                 MdsChip(
@@ -96,14 +124,16 @@ class ChipActivity : ComponentActivity() {
                                     onClick = { outlinedMedium = it },
                                     size = MdsChipSize.MEDIUM,
                                     type = MdsChipType.OUTLINED,
-                                    enabled = chipEnabled
+                                    enabled = chipEnabled,
+                                    prefixIcon = if (prefixIconEnabled) prefixIcon else null,
+                                    suffixIcon = if (suffixIconEnabled) suffixIcon else null
                                 )
                             }
                         }
 
                         LazyRow(
                             horizontalArrangement = Arrangement.spacedBy(5.dp),
-                            contentPadding = PaddingValues(horizontal = 10.dp)
+                            contentPadding = PaddingValues(horizontal = 20.dp)
                         ) {
                             items(5) {
                                 MdsChip(
@@ -112,14 +142,16 @@ class ChipActivity : ComponentActivity() {
                                     onClick = { solidSmall = it },
                                     size = MdsChipSize.SMALL,
                                     type = MdsChipType.SOLID,
-                                    enabled = chipEnabled
+                                    enabled = chipEnabled,
+                                    prefixIcon = if (prefixIconEnabled) prefixIcon else null,
+                                    suffixIcon = if (suffixIconEnabled) suffixIcon else null
                                 )
                             }
                         }
 
                         LazyRow(
                             horizontalArrangement = Arrangement.spacedBy(5.dp),
-                            contentPadding = PaddingValues(horizontal = 10.dp)
+                            contentPadding = PaddingValues(horizontal = 20.dp)
                         ) {
                             items(5) {
                                 MdsChip(
@@ -128,7 +160,9 @@ class ChipActivity : ComponentActivity() {
                                     onClick = { solidMedium = it },
                                     size = MdsChipSize.MEDIUM,
                                     type = MdsChipType.SOLID,
-                                    enabled = chipEnabled
+                                    enabled = chipEnabled,
+                                    prefixIcon = if (prefixIconEnabled) prefixIcon else null,
+                                    suffixIcon = if (suffixIconEnabled) suffixIcon else null
                                 )
                             }
                         }

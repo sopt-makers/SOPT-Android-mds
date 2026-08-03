@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.KeyboardActionHandler
+import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -38,6 +39,7 @@ fun MdsTextArea(
     state: TextFieldState,
     modifier: Modifier = Modifier,
     inputType: MdsInputType = MdsInputType.DEFAULT,
+    inputLimits: TextFieldLineLimits = TextFieldLineLimits.MultiLine(),
     required: Boolean = false,
     label: String? = null,
     description: String? = null,
@@ -53,6 +55,8 @@ fun MdsTextArea(
     val interactionSource = remember { MutableInteractionSource() }
 
     Column(
+        modifier = modifier
+            .heightIn(max = 150.dp)
     ) {
         if (required || !label.isNullOrBlank()) {
             Row(
@@ -65,14 +69,14 @@ fun MdsTextArea(
                         style = SoptTheme.typography.title5,
                         color = SoptTheme.colors.fg.neutral.bold
                     )
+                }
 
-                    if (required) {
-                        Text(
-                            text = "*",
-                            style = SoptTheme.typography.title5,
-                            color = SoptTheme.colors.fg.brand.default
-                        )
-                    }
+                if (required) {
+                    Text(
+                        text = "*",
+                        style = SoptTheme.typography.title5,
+                        color = SoptTheme.colors.fg.brand.default
+                    )
                 }
             }
         }
@@ -89,7 +93,6 @@ fun MdsTextArea(
 
         MdsBasicTextField(
             state = state,
-            modifier = modifier,
             textStyle = SoptTheme.typography.body1.copy(
                 color = SoptTheme.colors.fg.neutral.bold
             ),
@@ -105,6 +108,7 @@ fun MdsTextArea(
                     isError = isError
                 )
             },
+            lineLimits = inputLimits,
             onKeyboardAction = onKeyboardAction,
             inputTransformation = inputTransformation
         )

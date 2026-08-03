@@ -45,7 +45,10 @@ fun MdsActionButton(
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.spacedBy(
+            space = size.spacedBy,
+            alignment = Alignment.CenterHorizontally
+        ),
         modifier = modifier
             .clip(size.shape)
             .background(backgroundColor)

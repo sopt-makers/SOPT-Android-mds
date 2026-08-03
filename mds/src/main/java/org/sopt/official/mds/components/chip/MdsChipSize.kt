@@ -8,15 +8,18 @@ import org.sopt.official.mds.theme.SoptTheme
 
 enum class MdsChipSize(
     val verticalPadding: Dp,
-    val horizontalPadding: Dp
+    val horizontalPadding: Dp,
+    val iconSize: Dp
 ) {
     SMALL(
         verticalPadding = 9.dp,
-        horizontalPadding = 14.dp
+        horizontalPadding = 14.dp,
+        iconSize = 16.dp
     ),
     MEDIUM(
         verticalPadding = 10.dp,
-        horizontalPadding = 20.dp
+        horizontalPadding = 20.dp,
+        iconSize = 20.dp
     );
 
     @Composable

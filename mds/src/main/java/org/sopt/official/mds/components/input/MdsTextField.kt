@@ -52,6 +52,7 @@ fun MdsTextField(
     val interactionSource = remember { MutableInteractionSource() }
 
     Column(
+        modifier = modifier
     ) {
         if (required || !label.isNullOrBlank()) {
             Row(
@@ -64,14 +65,14 @@ fun MdsTextField(
                         style = SoptTheme.typography.title5,
                         color = SoptTheme.colors.fg.neutral.bold
                     )
+                }
 
-                    if (required) {
-                        Text(
-                            text = "*",
-                            style = SoptTheme.typography.title5,
-                            color = SoptTheme.colors.fg.brand.default
-                        )
-                    }
+                if (required) {
+                    Text(
+                        text = "*",
+                        style = SoptTheme.typography.title5,
+                        color = SoptTheme.colors.fg.brand.default
+                    )
                 }
             }
         }
@@ -82,13 +83,12 @@ fun MdsTextField(
                 style = SoptTheme.typography.body2,
                 color = SoptTheme.colors.fg.neutral.default
             )
-        }
 
-        Spacer(Modifier.height(10.dp))
+            Spacer(Modifier.height(10.dp))
+        }
 
         MdsBasicTextField(
             state = state,
-            modifier = modifier,
             textStyle = SoptTheme.typography.body1.copy(
                 color = SoptTheme.colors.fg.neutral.bold
             ),

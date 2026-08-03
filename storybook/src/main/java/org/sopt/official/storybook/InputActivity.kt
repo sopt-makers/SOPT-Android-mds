@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.maxLength
 import androidx.compose.foundation.verticalScroll
@@ -195,12 +196,30 @@ class InputActivity : ComponentActivity() {
                             placeholder = "Default Text Field",
                             label = if (showLabel) "Label" else null,
                             required = required,
-                            description = if(showDescription) "Description" else null,
-                            helperText = if(showHelperText) "Helper Text" else null,
-                            errorText = "10자 이상은 입력할 수 없습니다.",
-                            isError = if(showMaxLength) searchText.text.length > 10 else false,
-                            maxLength = if(showMaxLength) 20 else null,
-                            inputTransformation = if(showMaxLength) InputTransformation.maxLength(20) else null
+                            description = if (showDescription) "Description" else null,
+                            helperText = if (showHelperText) "Helper Text" else null,
+                            errorText = if (showMaxLength) "10자 이상은 입력할 수 없습니다." else null,
+                            isError = if (showMaxLength) searchText.text.length > 10 else false,
+                            maxLength = if (showMaxLength) 20 else null,
+                            inputTransformation = if (showMaxLength) InputTransformation.maxLength(
+                                20
+                            ) else null
+                        )
+
+                        MdsTextField(
+                            state = searchText,
+                            placeholder = "Bold Text Field",
+                            label = if (showLabel) "Label" else null,
+                            required = required,
+                            inputType = MdsInputType.BOLD,
+                            description = if (showDescription) "Description" else null,
+                            helperText = if (showHelperText) "Helper Text" else null,
+                            errorText = if (showMaxLength) "10자 이상은 입력할 수 없습니다." else null,
+                            isError = if (showMaxLength) searchText.text.length > 10 else false,
+                            maxLength = if (showMaxLength) 20 else null,
+                            inputTransformation = if (showMaxLength) InputTransformation.maxLength(
+                                20
+                            ) else null
                         )
 
                         Spacer(Modifier.height(20.dp))
@@ -216,11 +235,26 @@ class InputActivity : ComponentActivity() {
                             placeholder = "Default Text Area",
                             label = if (showLabel) "Label" else null,
                             required = required,
-                            description = if(showDescription) "Description" else null,
-                            helperText = if(showHelperText) "Helper Text" else null,
-                            errorText = "10자 이상은 입력할 수 없습니다.",
-                            isError = if(showMaxLength) searchText.text.length > 10 else false,
-                            maxLength = if(showMaxLength) 20 else null,
+                            inputLimits = TextFieldLineLimits.MultiLine(3, 3),
+                            description = if (showDescription) "Description" else null,
+                            helperText = if (showHelperText) "Helper Text" else null,
+                            errorText = if (showMaxLength) "10자 이상은 입력할 수 없습니다." else null,
+                            isError = if (showMaxLength) searchText.text.length > 10 else false,
+                            maxLength = if (showMaxLength) 20 else null,
+                        )
+
+                        MdsTextArea(
+                            state = searchText,
+                            placeholder = "Bold Text Area",
+                            label = if (showLabel) "Label" else null,
+                            required = required,
+                            inputLimits = TextFieldLineLimits.MultiLine(3, 3),
+                            inputType = MdsInputType.BOLD,
+                            description = if (showDescription) "Description" else null,
+                            helperText = if (showHelperText) "Helper Text" else null,
+                            errorText = if (showMaxLength) "10자 이상은 입력할 수 없습니다." else null,
+                            isError = if (showMaxLength) searchText.text.length > 10 else false,
+                            maxLength = if (showMaxLength) 20 else null,
                         )
                     }
                 }
