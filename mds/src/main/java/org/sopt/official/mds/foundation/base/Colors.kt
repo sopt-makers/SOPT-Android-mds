@@ -44,7 +44,7 @@ internal val blue950 = Color(0xFF121A2B)
 
 internal val red50 = Color(0xFFFFD1D3)
 internal val red100 = Color(0xFFFFA8AD)
-internal val red200 = Color(0xFFFF818B)
+internal val red200 = Color(0xFFFE818B)
 internal val red300 = Color(0xFFFA616D)
 internal val red400 = Color(0xFFF04251)
 internal val red500 = Color(0xFFCA2F3D)
