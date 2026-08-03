@@ -64,14 +64,14 @@ fun MdsTextField(
                         style = SoptTheme.typography.title5,
                         color = SoptTheme.colors.fg.neutral.bold
                     )
+                }
 
-                    if (required) {
-                        Text(
-                            text = "*",
-                            style = SoptTheme.typography.title5,
-                            color = SoptTheme.colors.fg.brand.default
-                        )
-                    }
+                if (required) {
+                    Text(
+                        text = "*",
+                        style = SoptTheme.typography.title5,
+                        color = SoptTheme.colors.fg.brand.default
+                    )
                 }
             }
         }
