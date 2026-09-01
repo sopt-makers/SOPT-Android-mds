@@ -56,7 +56,6 @@ fun MdsTextArea(
 
     Column(
         modifier = modifier
-            .heightIn(max = 150.dp)
     ) {
         if (required || !label.isNullOrBlank()) {
             Row(
