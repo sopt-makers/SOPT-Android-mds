@@ -123,6 +123,16 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         }
+
+                        item {
+                            Item(
+                                text = "Snack bar"
+                            ) {
+                                Intent(context, SnackbarActivity::class.java).apply {
+                                    context.startActivity(this)
+                                }
+                            }
+                        }
                     }
                 }
             }

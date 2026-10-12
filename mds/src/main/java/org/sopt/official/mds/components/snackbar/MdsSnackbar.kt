@@ -1,6 +1,7 @@
 package org.sopt.official.mds.components.snackbar
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,9 +19,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import org.sopt.official.mds.components.button.MdsTextButton
-import org.sopt.official.mds.components.button.MdsTextButtonSize
-import org.sopt.official.mds.components.button.MdsTextButtonType
 import org.sopt.official.mds.theme.SoptTheme
 
 @Composable
@@ -62,11 +60,11 @@ internal fun MdsSnackbar(
         onButtonClick?.let {
             Spacer(modifier = Modifier.width(14.dp))
 
-            MdsTextButton(
+            Text(
                 text = buttonText,
-                type = MdsTextButtonType.EMPHASIS,
-                size = MdsTextButtonSize.MEDIUM,
-                onClick = onButtonClick,
+                style = SoptTheme.typography.label3,
+                color = SoptTheme.colors.fg.secondary.default,
+                modifier = Modifier.clickable(onClick = onButtonClick)
             )
         }
     }

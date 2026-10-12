@@ -62,5 +62,9 @@
             android:name=".TagActivity"
             android:exported="false"
             android:launchMode="singleTop" />
+        <activity
+            android:name=".SnackbarActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
     </application>
 </manifest>
